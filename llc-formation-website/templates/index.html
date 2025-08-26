@@ -1,0 +1,305 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Start Your Business with Confidence</h1>
+                <p class="lead mb-4">Professional LLC formation services with expert guidance, legal compliance, and ongoing support. Form your LLC in any state with ease.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{{ url_for('llc_formation') }}" class="btn btn-light btn-lg px-4 py-3 fw-semibold">
+                        <i class="fas fa-rocket me-2"></i>Get Started Now
+                    </a>
+                    <a href="{{ url_for('pricing') }}" class="btn btn-outline-light btn-lg px-4 py-3 fw-semibold">
+                        <i class="fas fa-dollar-sign me-2"></i>View Pricing
+                    </a>
+                </div>
+                <div class="mt-4">
+                    <p class="mb-2"><i class="fas fa-check-circle me-2"></i>Form in any state</p>
+                    <p class="mb-2"><i class="fas fa-check-circle me-2"></i>Expert legal guidance</p>
+                    <p class="mb-0"><i class="fas fa-check-circle me-2"></i>Ongoing compliance support</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center">
+                    <img src="{{ url_for('static', filename='images/hero-illustration.svg') }}" alt="LLC Formation" class="img-fluid" style="max-width: 500px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="display-5 fw-bold mb-3">Why Choose Our LLC Formation Services?</h2>
+                <p class="lead text-muted">We make starting your business simple, fast, and legally compliant.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-gavel fa-2x text-primary"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Legal Expertise</h5>
+                        <p class="card-text text-muted">Our team of legal professionals ensures your LLC is formed correctly and complies with all state requirements.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-clock fa-2x text-success"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Fast Processing</h5>
+                        <p class="card-text text-muted">Get your LLC formed in as little as 24 hours with our expedited processing options.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-headset fa-2x text-info"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Ongoing Support</h5>
+                        <p class="card-text text-muted">Receive continuous support for compliance, annual filings, and business growth guidance.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-shield-alt fa-2x text-warning"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Liability Protection</h5>
+                        <p class="card-text text-muted">Protect your personal assets with proper LLC formation and ongoing compliance maintenance.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-danger bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-calculator fa-2x text-danger"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Tax Benefits</h5>
+                        <p class="card-text text-muted">Maximize your tax advantages with proper LLC structure and ongoing tax guidance.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-secondary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-globe fa-2x text-secondary"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">All 50 States</h5>
+                        <p class="card-text text-muted">Form your LLC in any state with our comprehensive knowledge of state-specific requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="display-5 fw-bold mb-3">Simple 3-Step Process</h2>
+                <p class="lead text-muted">Get your LLC formed quickly and easily with our streamlined process.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <div class="process-step bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 100px; height: 100px;">
+                        <span class="h2 fw-bold">1</span>
+                    </div>
+                    <h5 class="fw-bold mb-3">Provide Information</h5>
+                    <p class="text-muted">Fill out our simple form with your business details and preferred state of formation.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <div class="process-step bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 100px; height: 100px;">
+                        <span class="h2 fw-bold">2</span>
+                    </div>
+                    <h5 class="fw-bold mb-3">Expert Review</h5>
+                    <p class="text-muted">Our legal team reviews your information and prepares all necessary documents.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <div class="process-step bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 100px; height: 100px;">
+                        <span class="h2 fw-bold">3</span>
+                    </div>
+                    <h5 class="fw-bold mb-3">LLC Formation</h5>
+                    <p class="text-muted">We file your LLC with the state and provide you with all necessary documentation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Preview Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="display-5 fw-bold mb-3">Transparent Pricing</h2>
+                <p class="lead text-muted">Choose the package that best fits your business needs.</p>
+            </div>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold text-primary">Basic Package</h5>
+                        <div class="price mb-3">
+                            <span class="h2 fw-bold">$99</span>
+                            <span class="text-muted">+ state fees</span>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>LLC formation filing</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Articles of Organization</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Operating Agreement</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>EIN application</li>
+                            <li class="mb-2 text-muted"><i class="fas fa-times text-muted me-2"></i>Compliance monitoring</li>
+                        </ul>
+                        <a href="{{ url_for('pricing') }}" class="btn btn-outline-primary w-100">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-primary border-2 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="badge bg-primary mb-2">Most Popular</div>
+                        <h5 class="card-title fw-bold text-primary">Premium Package</h5>
+                        <div class="price mb-3">
+                            <span class="h2 fw-bold">$199</span>
+                            <span class="text-muted">+ state fees</span>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Everything in Basic</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Compliance monitoring</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Annual report filing</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Business license guidance</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority support</li>
+                        </ul>
+                        <a href="{{ url_for('pricing') }}" class="btn btn-primary w-100">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-primary text-white py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="display-5 fw-bold mb-3">Ready to Start Your Business?</h2>
+                <p class="lead mb-4">Join thousands of entrepreneurs who have successfully formed their LLCs with our expert services.</p>
+                <a href="{{ url_for('llc_formation') }}" class="btn btn-light btn-lg px-5 py-3 fw-semibold">
+                    <i class="fas fa-rocket me-2"></i>Start Your LLC Today
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="display-5 fw-bold mb-3">What Our Clients Say</h2>
+                <p class="lead text-muted">Don't just take our word for it - hear from satisfied customers.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text">"The process was incredibly smooth and professional. I had my LLC formed in just 2 days!"</p>
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <span class="fw-bold">S</span>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Sarah Johnson</h6>
+                                <small class="text-muted">Tech Startup Founder</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text">"Excellent customer service and legal expertise. They made the entire process stress-free."</p>
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <span class="fw-bold">M</span>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Michael Chen</h6>
+                                <small class="text-muted">Restaurant Owner</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text">"The ongoing compliance support has been invaluable for my growing business."</p>
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <span class="fw-bold">L</span>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Lisa Rodriguez</h6>
+                                <small class="text-muted">Consulting Business</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

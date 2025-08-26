@@ -136,11 +136,21 @@ def get_structured_data(business_type="Service", name="llcdirectory.org", descri
         }
     }
 
+@app.route('/test')
+def test():
+    """Simple test route to verify the app is working"""
+    return "LLC Formation Directory is working!"
+
 @app.route('/')
 def index():
     """Homepage - LLC Formation Services Directory"""
     title = "LLC Formation Services Directory - Find Local Business Formation Providers"
     meta_description = "Find local LLC formation services with reviews and contact information. Browse by city, state, or search for business formation providers near you."
+    
+    # Load data if not already loaded
+    global llc_data
+    if llc_data is None:
+        load_llc_data()
     
     # Get cities by state for dropdown
     cities_by_state = {}
@@ -208,6 +218,11 @@ def city_directory(state_slug, city_slug, page=1):
     
     state_info = states_data[state_slug]
     per_page = 5  # Show 5 businesses per page
+    
+    # Load data if not already loaded
+    global llc_data
+    if llc_data is None:
+        load_llc_data()
     
     # Get businesses in this city
     city_businesses = []
@@ -352,6 +367,11 @@ def state_directory(state_slug):
         return "State not found", 404
     
     state_info = states_data[state_slug]
+    
+    # Load data if not already loaded
+    global llc_data
+    if llc_data is None:
+        load_llc_data()
     
     # Debug: Print state info
     print(f"Debug: Looking for state {state_info['name']} ({state_info['abbr']})")
@@ -836,10 +856,11 @@ def llc_business_bank_account_guide():
                          structured_data=get_structured_data("WebPage", title, meta_description))
 
 # Load data on startup
-load_llc_data()
+# load_llc_data()  # Comment out immediate loading
 
 # For Vercel deployment
 app.debug = False
 
 if __name__ == '__main__':
+    load_llc_data()  # Only load when running locally
     app.run(debug=True, host='0.0.0.0', port=5000)

@@ -1,0 +1,493 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-3">
+                        <li class="breadcrumb-item"><a href="/" class="text-white-50">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url_for('resources') }}" class="text-white-50">Resources</a></li>
+                        <li class="breadcrumb-item active text-white">LLC Formation Guide</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4 fw-bold mb-3">Complete LLC Formation Guide</h1>
+                <p class="lead mb-4">Step-by-step guide to forming your LLC. Learn the process, requirements, and best practices for starting your limited liability company.</p>
+                
+                <!-- Quick Stats -->
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">8 Steps</div>
+                            <small class="text-white-75">Formation Process</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">$50-$500</div>
+                            <small class="text-white-75">Typical Costs</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">1-2 Weeks</div>
+                            <small class="text-white-75">Processing Time</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-white bg-opacity-10 rounded-3 p-4 border border-white border-opacity-25">
+                    <i class="fas fa-building fa-4x text-white mb-3"></i>
+                    <h5 class="text-white mb-2">Start Your Business</h5>
+                    <p class="text-white-75 mb-0">Form your LLC with confidence</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Tools Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Essential Tools for LLC Formation</h2>
+                <p class="text-muted mb-0">Use our interactive tools to help you through the LLC formation process.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-calculator text-primary fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">Cost Calculator</h5>
+                        </div>
+                        <p class="text-muted mb-3">Calculate the total cost of forming an LLC in your state, including filing fees and service provider costs.</p>
+                        <a href="{{ url_for('llc_cost_calculator') }}" class="btn btn-primary">Calculate Costs</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-question-circle text-success fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">Business Structure Quiz</h5>
+                        </div>
+                        <p class="text-muted mb-3">Not sure if an LLC is right for you? Take our quiz to determine the best business structure for your needs.</p>
+                        <a href="{{ url_for('business_structure_quiz') }}" class="btn btn-success">Take Quiz</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-clipboard-check text-info fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">Foreign Qualification</h5>
+                        </div>
+                        <p class="text-muted mb-3">Planning to do business in multiple states? Use our checklist to determine if you need foreign qualification.</p>
+                        <a href="{{ url_for('foreign_qualification_checklist') }}" class="btn btn-info">Check Requirements</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Step-by-Step Guide -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Step-by-Step LLC Formation Process</h2>
+                <p class="text-muted mb-0">Follow these 8 essential steps to form your LLC successfully.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Step 1 -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                                <span class="fw-bold">1</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h4 class="fw-bold mb-3">Choose Your Business Name</h4>
+                                <p class="text-muted mb-3">Select a unique name that complies with your state's naming requirements. The name must include "LLC," "Limited Liability Company," or an approved abbreviation.</p>
+                                
+                                <div class="bg-light rounded-3 p-3 mb-3">
+                                    <h6 class="fw-bold mb-2">Requirements:</h6>
+                                    <ul class="mb-0">
+                                        <li>Must be unique in your state</li>
+                                        <li>Cannot include restricted words (Bank, Insurance, etc.)</li>
+                                        <li>Must include LLC designation</li>
+                                        <li>Cannot be misleading or deceptive</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-primary bg-opacity-10 rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">💡 Pro Tip:</h6>
+                                    <p class="mb-0">Check name availability on your state's Secretary of State website before filing. You can also reserve a name for a small fee if you're not ready to file immediately.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                                <span class="fw-bold">2</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h4 class="fw-bold mb-3">Select Your State of Formation</h4>
+                                <p class="text-muted mb-3">Choose where to form your LLC. Most businesses form in their home state, but some choose Delaware or Nevada for specific benefits.</p>
+                                
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <div class="bg-light rounded-3 p-3">
+                                            <h6 class="fw-bold mb-2">Home State Formation:</h6>
+                                            <ul class="mb-0 small">
+                                                <li>Simpler compliance</li>
+                                                <li>Lower costs</li>
+                                                <li>Local business presence</li>
+                                                <li>Easier banking setup</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="bg-light rounded-3 p-3">
+                                            <h6 class="fw-bold mb-2">Delaware Formation:</h6>
+                                            <ul class="mb-0 small">
+                                                <li>Business-friendly laws</li>
+                                                <li>Privacy protection</li>
+                                                <li>Court of Chancery</li>
+                                                <li>Higher compliance costs</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-warning bg-opacity-10 rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">⚠️ Important:</h6>
+                                    <p class="mb-0">If you form in a different state than where you operate, you'll need foreign qualification in your home state, which adds complexity and costs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                                <span class="fw-bold">3</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h4 class="fw-bold mb-3">Appoint a Registered Agent</h4>
+                                <p class="text-muted mb-3">A registered agent receives legal documents and official correspondence on behalf of your LLC. This is required in all states.</p>
+                                
+                                <div class="bg-light rounded-3 p-3 mb-3">
+                                    <h6 class="fw-bold mb-2">Registered Agent Requirements:</h6>
+                                    <ul class="mb-0">
+                                        <li>Must have a physical address in the state</li>
+                                        <li>Available during business hours</li>
+                                        <li>Can be an individual or professional service</li>
+                                        <li>Must accept service of process</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-info bg-opacity-10 rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">💼 Professional Service:</h6>
+                                    <p class="mb-0">Consider using a professional registered agent service for privacy, reliability, and compliance. Many formation services include this for the first year.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                                <span class="fw-bold">4</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h4 class="fw-bold mb-3">File Articles of Organization</h4>
+                                <p class="text-muted mb-3">Submit your LLC formation documents to the state. This is the official step that creates your LLC as a legal entity.</p>
+                                
+                                <div class="bg-light rounded-3 p-3 mb-3">
+                                    <h6 class="fw-bold mb-2">Required Information:</h6>
+                                    <ul class="mb-0">
+                                        <li>LLC name and address</li>
+                                        <li>Registered agent information</li>
+                                        <li>Business purpose (varies by state)</li>
+                                        <li>Member/manager information</li>
+                                        <li>Filing fee payment</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-success bg-opacity-10 rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">✅ Filing Options:</h6>
+                                    <p class="mb-0">File directly with the state, use an online formation service, or hire an attorney. Online services typically cost $50-$300 and include additional features.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                                <span class="fw-bold">5</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h4 class="fw-bold mb-3">Create an Operating Agreement</h4>
+                                <p class="text-muted mb-3">While not required in all states, an operating agreement is essential for defining ownership, management, and operational procedures.</p>
+                                
+                                <div class="bg-light rounded-3 p-3 mb-3">
+                                    <h6 class="fw-bold mb-2">Key Sections:</h6>
+                                    <ul class="mb-0">
+                                        <li>Member information and ownership percentages</li>
+                                        <li>Management structure and voting rights</li>
+                                        <li>Profit and loss distribution</li>
+                                        <li>Buyout and dissolution procedures</li>
+                                        <li>Meeting requirements and record keeping</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-warning bg-opacity-10 rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">📋 Template Available:</h6>
+                                    <p class="mb-0">Use our <a href="{{ url_for('llc_operating_agreement_guide') }}" class="text-decoration-none">Operating Agreement Guide</a> to create a comprehensive document tailored to your needs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                                <span class="fw-bold">6</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h4 class="fw-bold mb-3">Obtain an EIN (Employer Identification Number)</h4>
+                                <p class="text-muted mb-3">Apply for an EIN from the IRS. This is your business's tax ID number and is required for opening bank accounts and hiring employees.</p>
+                                
+                                <div class="bg-light rounded-3 p-3 mb-3">
+                                    <h6 class="fw-bold mb-2">EIN Application:</h6>
+                                    <ul class="mb-0">
+                                        <li>Free application on IRS website</li>
+                                        <li>Immediate approval for online applications</li>
+                                        <li>Required for multi-member LLCs</li>
+                                        <li>Needed for business bank accounts</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-info bg-opacity-10 rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">🔗 Apply Online:</h6>
+                                    <p class="mb-0">Visit the <a href="https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online" target="_blank" class="text-decoration-none">IRS EIN application page</a> to get your number instantly.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                                <span class="fw-bold">7</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h4 class="fw-bold mb-3">Open a Business Bank Account</h4>
+                                <p class="text-muted mb-3">Separate your business and personal finances by opening a dedicated business bank account. This is crucial for maintaining liability protection.</p>
+                                
+                                <div class="bg-light rounded-3 p-3 mb-3">
+                                    <h6 class="fw-bold mb-2">Required Documents:</h6>
+                                    <ul class="mb-0">
+                                        <li>Articles of Organization</li>
+                                        <li>EIN confirmation letter</li>
+                                        <li>Operating Agreement</li>
+                                        <li>Government-issued ID</li>
+                                        <li>Initial deposit</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-success bg-opacity-10 rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">🏦 Banking Guide:</h6>
+                                    <p class="mb-0">See our <a href="{{ url_for('llc_business_bank_account_guide') }}" class="text-decoration-none">Business Bank Account Guide</a> for detailed requirements and recommendations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 8 -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                                <span class="fw-bold">8</span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h4 class="fw-bold mb-3">Comply with Ongoing Requirements</h4>
+                                <p class="text-muted mb-3">Maintain your LLC's good standing by meeting ongoing compliance requirements, including annual reports and tax filings.</p>
+                                
+                                <div class="bg-light rounded-3 p-3 mb-3">
+                                    <h6 class="fw-bold mb-2">Ongoing Requirements:</h6>
+                                    <ul class="mb-0">
+                                        <li>Annual reports to the state</li>
+                                        <li>Tax filings (federal and state)</li>
+                                        <li>Maintaining registered agent</li>
+                                        <li>Keeping business records</li>
+                                        <li>Renewing licenses and permits</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-warning bg-opacity-10 rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">📅 Stay Compliant:</h6>
+                                    <p class="mb-0">Check our <a href="{{ url_for('llc_compliance_guide') }}" class="text-decoration-none">LLC Compliance Guide</a> for detailed requirements and deadlines for your state.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <!-- Quick Links -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="fas fa-link me-2"></i>Quick Links</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="list-group list-group-flush">
+                                <a href="{{ url_for('llc_cost_calculator') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="fas fa-calculator text-primary me-3"></i>
+                                    <div>
+                                        <h6 class="mb-1">Cost Calculator</h6>
+                                        <small class="text-muted">Calculate formation costs</small>
+                                    </div>
+                                </a>
+                                <a href="{{ url_for('business_structure_quiz') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="fas fa-question-circle text-success me-3"></i>
+                                    <div>
+                                        <h6 class="mb-1">Business Structure Quiz</h6>
+                                        <small class="text-muted">Find your perfect structure</small>
+                                    </div>
+                                </a>
+                                <a href="{{ url_for('llc_operating_agreement_guide') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="fas fa-file-contract text-info me-3"></i>
+                                    <div>
+                                        <h6 class="mb-1">Operating Agreement Guide</h6>
+                                        <small class="text-muted">Create your agreement</small>
+                                    </div>
+                                </a>
+                                <a href="{{ url_for('llc_tax_guide') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="fas fa-calculator text-warning me-3"></i>
+                                    <div>
+                                        <h6 class="mb-1">Tax Guide</h6>
+                                        <small class="text-muted">Understand LLC taxation</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- External Resources -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0"><i class="fas fa-external-link-alt me-2"></i>External Resources</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="list-group list-group-flush">
+                                <a href="https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online" target="_blank" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-external-link-alt text-success me-2"></i>
+                                    IRS EIN Application
+                                </a>
+                                <a href="https://www.sba.gov/business-guide/launch-your-business/choose-business-structure/limited-liability-corporation-llc" target="_blank" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-external-link-alt text-success me-2"></i>
+                                    SBA LLC Guide
+                                </a>
+                                <a href="https://www.nolo.com/legal-encyclopedia/llc-basics" target="_blank" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-external-link-alt text-success me-2"></i>
+                                    Nolo LLC Basics
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Need Help -->
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-headset fa-3x text-primary mb-3"></i>
+                            <h5 class="fw-bold mb-3">Need Professional Help?</h5>
+                            <p class="text-muted mb-3">Consider using a professional LLC formation service for guidance and compliance.</p>
+                            <a href="{{ url_for('resources') }}" class="btn btn-primary">View Our Resources</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h3 class="fw-bold mb-3">Ready to Form Your LLC?</h3>
+                <p class="mb-0">Use our tools and guides to start your business with confidence. Get accurate cost estimates and step-by-step guidance.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('llc_cost_calculator') }}" class="btn btn-light btn-lg me-2">Calculate Costs</a>
+                <a href="{{ url_for('business_structure_quiz') }}" class="btn btn-outline-light btn-lg">Take Quiz</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Disclaimer -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info mb-0">
+                    <h6 class="fw-bold mb-2">📋 Important Disclaimer:</h6>
+                    <p class="mb-0">This guide provides general information about LLC formation. Laws and requirements vary by state. We recommend consulting with a qualified attorney or tax professional for specific legal and tax advice related to your situation. This information is for educational purposes only and should not be considered legal, tax, or financial advice.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Category Header -->
+<section class="bg-primary text-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-3">
+                        <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/categories" class="text-white">Categories</a></li>
+                        <li class="breadcrumb-item active text-white">{{ category_name }}</li>
+                    </ol>
+                </nav>
+                <h1 class="display-5 fw-bold mb-3">{{ category_name }} Businesses</h1>
+                <p class="lead mb-4">Find {{ category_name.lower() }} businesses near you with reviews and contact information</p>
+                
+                <!-- Search Form -->
+                <form action="/search" method="GET" class="bg-white p-3 rounded">
+                    <div class="row g-2">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="q" placeholder="Search {{ category_name.lower() }}...">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" name="city" placeholder="City">
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" name="state">
+                                <option value="">All States</option>
+                                {% for state_slug, state_info in states_data.items() %}
+                                <option value="{{ state_info.abbr }}">{{ state_info.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="category" value="{{ category_name.lower() }}">
+                </form>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-white bg-opacity-10 rounded p-4">
+                    <h3 class="text-white mb-2">{{ businesses|length }}</h3>
+                    <p class="mb-0">{{ category_name }} Businesses</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Business Listings -->
+<section class="py-5">
+    <div class="container">
+        {% if businesses %}
+        <!-- Sort and Filter Options -->
+        <div class="row mb-4">
+            <div class="col-lg-8">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="text-muted">{{ businesses|length }} {{ category_name.lower() }} businesses found</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <label class="me-2">Sort by:</label>
+                        <select class="form-select form-select-sm" style="width: auto;">
+                            <option>Relevance</option>
+                            <option>Rating</option>
+                            <option>Name A-Z</option>
+                            <option>Name Z-A</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Business Grid -->
+        <div class="row">
+            {% for business in businesses %}
+            <div class="col-lg-6 col-xl-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h5 class="card-title mb-0">
+                                <a href="/business/{{ loop.index0 }}" class="text-decoration-none">{{ business.name }}</a>
+                            </h5>
+                            {% if business.rating %}
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <span class="ms-1">{{ business.rating }}</span>
+                                {% if business.reviews %}
+                                <small class="text-muted">({{ business.reviews }})</small>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        {% if business.category %}
+                        <span class="badge bg-secondary mb-2">{{ business.category }}</span>
+                        {% endif %}
+                        
+                        {% if business.full_address %}
+                        <p class="text-muted mb-2">
+                            <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                            {{ business.full_address }}
+                        </p>
+                        {% endif %}
+                        
+                        {% if business.phone %}
+                        <p class="text-muted mb-2">
+                            <i class="fas fa-phone text-primary me-2"></i>
+                            {{ business.phone }}
+                        </p>
+                        {% endif %}
+                        
+                        {% if business.description %}
+                        <p class="card-text">{{ business.description[:150] }}{% if business.description|length > 150 %}...{% endif %}</p>
+                        {% endif %}
+                        
+                        <div class="d-flex gap-2">
+                            <a href="/business/{{ loop.index0 }}" class="btn btn-outline-primary btn-sm">View Details</a>
+                            {% if business.phone %}
+                            <a href="tel:{{ business.phone }}" class="btn btn-success btn-sm">
+                                <i class="fas fa-phone me-1"></i> Call
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if businesses|length > 12 %}
+        <nav aria-label="Category business pagination" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+        {% endif %}
+        
+        {% else %}
+        <!-- No Businesses Found -->
+        <div class="text-center py-5">
+            <i class="fas fa-search fa-4x text-muted mb-4"></i>
+            <h3>No {{ category_name.lower() }} businesses found</h3>
+            <p class="text-muted mb-4">We don't have any {{ category_name.lower() }} businesses listed yet.</p>
+                                <div class="d-flex justify-content-center gap-3">
+                        <a href="/search" class="btn btn-primary">Search All Businesses</a>
+                        <a href="/" class="btn btn-outline-primary">Browse Homepage</a>
+                    </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Related Categories -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Related Categories</h2>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-utensils fa-3x text-primary mb-3"></i>
+                        <h5>Restaurants</h5>
+                        <a href="/search?category=restaurant" class="btn btn-outline-primary btn-sm">Browse</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-tools fa-3x text-primary mb-3"></i>
+                        <h5>Services</h5>
+                        <a href="/search?category=service" class="btn btn-outline-primary btn-sm">Browse</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-shopping-bag fa-3x text-primary mb-3"></i>
+                        <h5>Retail</h5>
+                        <a href="/search?category=retail" class="btn btn-outline-primary btn-sm">Browse</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="fas fa-plus-square fa-3x text-primary mb-3"></i>
+                        <h5>Healthcare</h5>
+                        <a href="/search?category=healthcare" class="btn btn-outline-primary btn-sm">Browse</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Category Statistics -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">{{ category_name }} Business Directory</h2>
+        <div class="row text-center">
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-building fa-3x text-primary mb-3"></i>
+                        <h3 class="text-primary">{{ businesses|length }}</h3>
+                        <p class="mb-0">{{ category_name }} Businesses</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
+                        <h3 class="text-primary">50</h3>
+                        <p class="mb-0">States Covered</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-star fa-3x text-primary mb-3"></i>
+                        <h3 class="text-primary">4.5</h3>
+                        <p class="mb-0">Average Rating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

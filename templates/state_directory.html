@@ -1,0 +1,2785 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- State Hero Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-3">
+                        <li class="breadcrumb-item"><a href="/" class="text-white-50">Home</a></li>
+                        <li class="breadcrumb-item active text-white">{{ state.name }}</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4 fw-bold mb-3">LLC Formation Services in {{ state.name }} (2025 Directory)</h1>
+                <p class="lead mb-4">Find the best LLC formation services across {{ state.name }}. Get professional help with business registration, legal services, and everything you need to start your LLC in {{ state.name }}.</p>
+                
+                <!-- Expert Credibility -->
+                <div class="d-flex align-items-center mb-4">
+                    <div class="bg-white bg-opacity-20 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Business Formation Expert" class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div>
+                        <h6 class="text-white mb-1">Business Formation Expert</h6>
+                        <p class="text-white-75 mb-0">Trusted by 50,000+ entrepreneurs nationwide</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-white bg-opacity-10 rounded-3 p-4 border border-white border-opacity-25">
+                    <div class="display-6 fw-bold text-white mb-2">{{ total_businesses }}</div>
+                    <p class="mb-0 text-white-75">LLC Formation Services</p>
+                    <small class="text-white-50">in {{ state.name }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About LLC Services in This State -->
+<section class="py-4 bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="h4 fw-bold mb-3">About LLC Services in {{ state.name }}</h3>
+                
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <div class="text-center p-3 border rounded">
+                            <i class="fas fa-dollar-sign text-primary fa-2x mb-2"></i>
+                            <h6 class="fw-bold mb-2">State Costs</h6>
+                            <p class="small text-muted mb-1">Filing fee: ${{ states_data[state.name.lower().replace(' ', '-')].formation_fee }}</p>
+                            <p class="small text-muted mb-0">Annual fee: ${{ states_data[state.name.lower().replace(' ', '-')].annual_fee if states_data[state.name.lower().replace(' ', '-')].annual_fee else 'Varies' }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="text-center p-3 border rounded">
+                            <i class="fas fa-laptop text-primary fa-2x mb-2"></i>
+                            <h6 class="fw-bold mb-2">Online vs Local</h6>
+                            <p class="small text-muted mb-1">Online: Faster & cheaper</p>
+                            <p class="small text-muted mb-0">Local: Personalized service</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="text-center p-3 border rounded">
+                            <i class="fas fa-building text-primary fa-2x mb-2"></i>
+                            <h6 class="fw-bold mb-2">Business Types</h6>
+                            <p class="small text-muted mb-1">LLC: Most popular</p>
+                            <p class="small text-muted mb-0">Corp: For larger businesses</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="text-center p-3 border rounded">
+                            <i class="fas fa-chart-line text-primary fa-2x mb-2"></i>
+                            <h6 class="fw-bold mb-2">{{ state.name }} Services</h6>
+                            <p class="small text-muted mb-1">{{ total_businesses }} providers</p>
+                            <p class="small text-muted mb-0">Statewide coverage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Easy Online LLC Formation Options -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">Easy Online LLC Formation Options</h2>
+            <p class="text-muted mb-0">Start your LLC online in minutes with these trusted nationwide providers</p>
+        </div>
+        
+        <!-- Featured Provider - Northwest Registered Agent -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card border-0 shadow-lg h-100" style="border: 3px solid #007bff !important;">
+                    <div class="card-body p-4">
+                        <!-- Header with Crown Icon -->
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                                <i class="fas fa-crown fa-2x text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="fw-bold mb-1">🏆 Our Top Recommendation</h4>
+                                <p class="text-muted mb-0">Best overall value and customer satisfaction</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Main Content Row -->
+                        <div class="row align-items-center">
+                            <!-- Left Column - Logo and Info -->
+                            <div class="col-lg-6">
+                                <div class="text-center mb-4">
+                                    <img src="{{ url_for('static', filename='northwest.png') }}" alt="Northwest Registered Agent" class="img-fluid mb-3" style="max-height: 80px;">
+                                    <h4 class="fw-bold">Northwest Registered Agent</h4>
+                                    <div class="text-warning mb-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="text-muted ms-2">4.9/5 (2,500+ reviews)</span>
+                                    </div>
+                                    <h3 class="text-primary fw-bold mb-3">$39 + State Fees</h3>
+                                </div>
+                            </div>
+                            
+                            <!-- Right Column - Benefits -->
+                            <div class="col-lg-6">
+                                <h6 class="fw-bold text-success mb-3">Why We Recommend Northwest:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        <strong>Best Value:</strong> Lowest price with premium features
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        <strong>Privacy Protection:</strong> Keep your address off public records
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        <strong>No Upsells:</strong> Transparent pricing, no hidden fees
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        <strong>Lifetime Support:</strong> Customer service for life
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        <strong>Free Registered Agent:</strong> First year included ($125 value)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Call to Action -->
+                        <div class="text-center mt-4">
+                            <a href="https://consumer-champion.org/LLCwebsite" target="_blank" rel="sponsored nofollow" class="btn btn-primary btn-lg">
+                                <i class="fas fa-rocket me-2"></i>Start Your LLC with Northwest Registered Agent
+                            </a>
+                            <p class="text-muted small mt-2">Most popular choice for {{ state.name }} business owners</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Other Options (Less Prominent) -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <h5 class="text-muted mb-4 text-center">Other Formation Services (For Comparison)</h5>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100" style="opacity: 0.8;">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="{{ url_for('static', filename='filenow.png') }}" alt="FileNow" class="img-fluid mb-2" style="max-height: 60px;">
+                            <h6 class="fw-bold">FileNow</h6>
+                            <div class="text-warning mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-muted ms-2">4.2/5</span>
+                            </div>
+                            <h5 class="text-muted fw-bold mb-2">$79 + State Fees</h5>
+                        </div>
+                        
+                        <div class="small">
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-success mb-1">Pros:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Comprehensive legal documents
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Attorney consultation available
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-danger mb-1">Cons:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        Higher pricing ($40 more than Northwest)
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        Can be overwhelming for simple needs
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="https://www.filenow.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm w-100">
+                            <i class="fas fa-external-link-alt me-2"></i>Visit FileNow
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100" style="opacity: 0.8;">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <img src="{{ url_for('static', filename='bizee.jpg') }}" alt="Bizee" class="img-fluid mb-2" style="max-height: 60px;">
+                            <h6 class="fw-bold">Bizee</h6>
+                            <div class="text-warning mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-muted ms-2">4.5/5</span>
+                            </div>
+                            <h5 class="text-muted fw-bold mb-2">$99 + State Fees</h5>
+                        </div>
+                        
+                        <div class="small">
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-success mb-1">Pros:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Website builder included
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Free registered agent for 1 year
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-danger mb-1">Cons:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        Much higher pricing ($60 more than Northwest)
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        Website builder may not be needed
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="https://www.bizee.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm w-100">
+                            <i class="fas fa-external-link-alt me-2"></i>Visit Bizee
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100" style="opacity: 0.8;">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <h6 class="fw-bold">LegalZoom</h6>
+                            <div class="text-warning mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-muted ms-2">4.3/5</span>
+                            </div>
+                            <h5 class="text-muted fw-bold mb-2">$79 + State Fees</h5>
+                        </div>
+                        
+                        <div class="small">
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-success mb-1">Pros:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Well-known brand name
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Comprehensive legal services
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-danger mb-1">Cons:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        Higher pricing ($40 more than Northwest)
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        Aggressive upselling tactics
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="https://www.legalzoom.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm w-100">
+                            <i class="fas fa-external-link-alt me-2"></i>Visit LegalZoom
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100" style="opacity: 0.8;">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <h6 class="fw-bold">ZenBusiness</h6>
+                            <div class="text-warning mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-muted ms-2">4.4/5</span>
+                            </div>
+                            <h5 class="text-muted fw-bold mb-2">$49 + State Fees</h5>
+                        </div>
+                        
+                        <div class="small">
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-success mb-1">Pros:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Free registered agent for 1 year
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Good customer service
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-danger mb-1">Cons:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        Higher pricing ($10 more than Northwest)
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        Limited privacy protection features
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="https://www.zenbusiness.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm w-100">
+                            <i class="fas fa-external-link-alt me-2"></i>Visit ZenBusiness
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100" style="opacity: 0.8;">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <h6 class="fw-bold">Inc Authority</h6>
+                            <div class="text-warning mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-muted ms-2">4.1/5</span>
+                            </div>
+                            <h5 class="text-muted fw-bold mb-2">$0 + State Fees</h5>
+                        </div>
+                        
+                        <div class="small">
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-success mb-1">Pros:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Free LLC formation service
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Free registered agent for 1 year
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-danger mb-1">Cons:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        Very aggressive upselling tactics
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        Limited privacy protection features
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="https://www.incauthority.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm w-100">
+                            <i class="fas fa-external-link-alt me-2"></i>Visit Inc Authority
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100" style="opacity: 0.8;">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
+                                <i class="fas fa-landmark fa-2x text-primary"></i>
+                            </div>
+                            <h6 class="fw-bold">{{ state.name }} Secretary of State</h6>
+                            <div class="text-warning mb-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-muted ms-2">3.5/5</span>
+                            </div>
+                            <h5 class="text-muted fw-bold mb-2">${{ state.filing_fee if state.filing_fee else 'Varies' }} (State Fee Only)</h5>
+                        </div>
+                        
+                        <div class="small">
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-success mb-1">Pros:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Lowest cost (state fee only)
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Direct government filing
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-danger mb-1">Cons:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        No guidance or support
+                                    </li>
+                                    <li class="mb-1">
+                                        <i class="fas fa-times text-danger me-2"></i>
+                                        No privacy protection included
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="{{ state.sos_url if state.sos_url else '#' }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary btn-sm w-100">
+                            <i class="fas fa-external-link-alt me-2"></i>Visit {{ state.name }} SOS
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pricing Disclaimer & Affiliate Disclosure -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="alert alert-warning border-0 py-3" role="alert">
+                    <div class="d-flex align-items-start">
+                        <i class="fas fa-exclamation-triangle text-warning me-3 mt-1"></i>
+                        <div class="small">
+                            <strong class="text-warning">Important:</strong> 
+                            <span class="text-muted">Pricing may have changed since this article was published. Please verify current rates with each service provider before proceeding. Additionally, this site may receive compensation from affiliate links, which helps support our free content and research.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Northwest Registered Agent is the Best -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                                <i class="fas fa-trophy fa-2x text-primary"></i>
+                            </div>
+                            <h4 class="fw-bold">Why Northwest Registered Agent is Our Top Recommendation for {{ state.name }}</h4>
+                            <p class="text-muted">Based on comprehensive analysis and customer feedback</p>
+                        </div>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <h6 class="fw-bold mb-3">Key Advantages:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-3 d-flex align-items-start">
+                                        <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3 mt-1" style="width: 30px; height: 30px;">
+                                            <i class="fas fa-shield-alt text-success"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Privacy Protection:</strong> Northwest Registered Agent provides superior privacy protection by keeping your personal address off public records, which is crucial for home-based businesses in {{ state.name }}.
+                                        </div>
+                                    </li>
+                                    <li class="mb-3 d-flex align-items-start">
+                                        <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3 mt-1" style="width: 30px; height: 30px;">
+                                            <i class="fas fa-dollar-sign text-success"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Transparent Pricing:</strong> $39 + {{ state.name }} state fees with no hidden costs, no upsells, and free first year of registered agent service ($125/year after).
+                                        </div>
+                                    </li>
+                                    <li class="mb-3 d-flex align-items-start">
+                                        <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3 mt-1" style="width: 30px; height: 30px;">
+                                            <i class="fas fa-headset text-success"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Excellent Customer Service:</strong> Friendly, knowledgeable support with no high-pressure sales tactics, verified by multiple independent sources.
+                                        </div>
+                                    </li>
+                                    <li class="mb-3 d-flex align-items-start">
+                                        <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3 mt-1" style="width: 30px; height: 30px;">
+                                            <i class="fas fa-lock text-success"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Data Protection:</strong> Northwest never sells customer data, ensuring complete privacy and trust.
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold mb-3">Verified Information & Citations:</h6>
+                                
+                                <div class="mb-4">
+                                    <h6 class="fw-bold text-secondary mb-2">1. Pricing, Formation, and Registered Agent Service</h6>
+                                    <p class="small text-muted mb-2">LLC formation is $39 + {{ state.name }} state fee, which includes a free first year of Registered Agent service, and then renews at $125 per year. Privacy (address protection) is included.</p>
+                                    <div class="d-flex gap-2 mb-3">
+                                        <span class="badge bg-secondary">Northwest Registered Agent</span>
+                                        <span class="badge bg-secondary">Wise.com</span>
+                                        <span class="badge bg-secondary">United Capital Source</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h6 class="fw-bold text-secondary mb-2">2. Privacy & No Upsells</h6>
+                                    <p class="small text-muted mb-2">Northwest emphasizes transparent pricing, "no hidden fees," and no confusing packages or upsells. They also never sell customer data.</p>
+                                    <div class="d-flex gap-2 mb-3">
+                                        <span class="badge bg-secondary">Wise.com (June 2025)</span>
+                                    </div>
+                                    <p class="small text-muted mb-2">The company is recognized for its strong privacy protections, personalized customer support through assigned Corporate Guides, and straightforward, no‑nonsense compliance services. Their dashboard is user‑friendly, and they have transparent pricing without upselling.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h6 class="fw-bold text-secondary mb-2">3. Customer Service</h6>
+                                    <p class="small text-muted mb-2">Reviews highlight excellent customer service, often noting friendly, knowledgeable support with no high‑pressure sales tactics.</p>
+                                    <div class="d-flex gap-2 mb-3">
+                                        <span class="badge bg-secondary">Wise.com</span>
+                                        <span class="badge bg-secondary">United Capital Source</span>
+                                        <span class="badge bg-secondary">Venture Smarter</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <a href="https://consumer-champion.org/LLCwebsite" target="_blank" rel="sponsored nofollow" class="btn btn-primary btn-lg">
+                                <i class="fas fa-rocket me-2"></i>Start Your LLC with Northwest Registered Agent
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Business Structure Quiz -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">📊 Which Business Structure Is Right for You?</h2>
+            <p class="text-muted mb-0">Answer these quick questions to see if an LLC, C-Corp, or S-Corp may be the best fit for your {{ state.name }} business.</p>
+            <div class="alert alert-warning border-0 mt-3" role="alert">
+                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                <strong>Disclaimer:</strong> This is not legal or accounting advice. Please consult with a qualified professional for your specific situation.
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="row g-4">
+                            <!-- Question 1 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">1. How many owners will your business have?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q1" id="q1a" value="A">
+                                        <label class="form-check-label small" for="q1a">Just me (solo founder)</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q1" id="q1b" value="B">
+                                        <label class="form-check-label small" for="q1b">A few partners (friends/family/business partners)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q1" id="q1c" value="C">
+                                        <label class="form-check-label small" for="q1c">Many potential investors/shareholders</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 2 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">2. What's most important to you when it comes to taxes?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q2" id="q2a" value="A">
+                                        <label class="form-check-label small" for="q2a">Keep it simple with pass-through taxation</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q2" id="q2b" value="B">
+                                        <label class="form-check-label small" for="q2b">Minimize self-employment taxes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q2" id="q2c" value="C">
+                                        <label class="form-check-label small" for="q2c">Reinvest profits back into the company</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 3 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">3. Do you plan to raise outside investment or venture capital?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q3" id="q3a" value="A">
+                                        <label class="form-check-label small" for="q3a">No, just a small business or side hustle</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q3" id="q3b" value="B">
+                                        <label class="form-check-label small" for="q3b">Maybe some investors later, but not big venture capital</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q3" id="q3c" value="C">
+                                        <label class="form-check-label small" for="q3c">Yes, I'll need angel investors or venture capital</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 4 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">4. Do you want to easily issue different classes of stock?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q4" id="q4a" value="A">
+                                        <label class="form-check-label small" for="q4a">Not important</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q4" id="q4b" value="B">
+                                        <label class="form-check-label small" for="q4b">Somewhat important</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q4" id="q4c" value="C">
+                                        <label class="form-check-label small" for="q4c">Very important — flexibility for investors is key</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 5 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">5. How do you want to handle profits and losses?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q5" id="q5a" value="A">
+                                        <label class="form-check-label small" for="q5a">Simple distribution to owners</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q5" id="q5b" value="B">
+                                        <label class="form-check-label small" for="q5b">Salary + dividend split for tax efficiency</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q5" id="q5c" value="C">
+                                        <label class="form-check-label small" for="q5c">Keep profits in the business for growth</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 6 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">6. How much ongoing compliance and paperwork are you okay with?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q6" id="q6a" value="A">
+                                        <label class="form-check-label small" for="q6a">Minimal — I prefer simple requirements</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q6" id="q6b" value="B">
+                                        <label class="form-check-label small" for="q6b">Moderate — okay with some rules if it saves on taxes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q6" id="q6c" value="C">
+                                        <label class="form-check-label small" for="q6c">Heavy — I don't mind stricter rules if it helps attract investors</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 7 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">7. What's your long-term exit strategy?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q7" id="q7a" value="A">
+                                        <label class="form-check-label small" for="q7a">Just run the business for income — not planning to sell</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q7" id="q7b" value="B">
+                                        <label class="form-check-label small" for="q7b">Maybe sell to another small business</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q7" id="q7c" value="C">
+                                        <label class="form-check-label small" for="q7c">Scale big, possibly go public or sell to a large company</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 8 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">8. Are there restrictions on who your owners/shareholders will be?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q8" id="q8a" value="A">
+                                        <label class="form-check-label small" for="q8a">All U.S. residents, no problem</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="q8" id="q8b" value="B">
+                                        <label class="form-check-label small" for="q8b">Possibly foreign investors or corporations as owners</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q8" id="q8c" value="C">
+                                        <label class="form-check-label small" for="q8c">I'll definitely need flexibility to have non-U.S. or entity owners</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <button class="btn btn-primary btn-lg" onclick="calculateResult()">
+                                <i class="fas fa-calculator me-2"></i>Get My Recommendation
+                            </button>
+                        </div>
+                        
+                        <div id="quiz-result" class="mt-4" style="display: none;">
+                            <div class="alert alert-info border-0">
+                                <h5 class="fw-bold mb-3">🔎 How to Interpret Results</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="border rounded p-3 h-100">
+                                            <h6 class="fw-bold text-success mb-2">Mostly A's → LLC</h6>
+                                            <p class="small mb-0">Best for small businesses, side hustles, and owners who want simplicity, flexibility, and privacy. Profits pass directly to you, and compliance is light.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="border rounded p-3 h-100">
+                                            <h6 class="fw-bold text-primary mb-2">Mostly B's → S Corporation</h6>
+                                            <p class="small mb-0">Good for small-to-medium businesses where owners want to reduce self-employment taxes, pay themselves a salary, and take dividends. Some restrictions on ownership.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="border rounded p-3 h-100">
+                                            <h6 class="fw-bold text-warning mb-2">Mostly C's → C Corporation</h6>
+                                            <p class="small mb-0">Ideal if you plan to raise venture capital, issue stock, or eventually go public. Best for startups aiming to scale big. Comes with more rules and double taxation.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Foreign Qualification Cost Calculator -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">🌍 Foreign Qualification Cost Calculator</h2>
+            <p class="text-muted mb-0">Calculate the costs of expanding your business to {{ state.name }} from another state</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="row g-4">
+                            <!-- Origin State -->
+                            <div class="col-md-6">
+                                <label for="originState" class="form-label fw-bold">Origin State (Where your LLC is currently formed)</label>
+                                <select class="form-select" id="originState">
+                                    <option value="">Select your origin state</option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="WV">West Virginia</option>
+                                    <option value="WI">Wisconsin</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Business Type -->
+                            <div class="col-md-6">
+                                <label for="businessType" class="form-label fw-bold">Business Type</label>
+                                <select class="form-select" id="businessType">
+                                    <option value="">Select business type</option>
+                                    <option value="llc">LLC</option>
+                                    <option value="corporation">Corporation</option>
+                                    <option value="partnership">Partnership</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Additional Services -->
+                            <div class="col-12">
+                                <label class="form-label fw-bold">Additional Services Needed</label>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="registeredAgent" value="125">
+                                            <label class="form-check-label" for="registeredAgent">
+                                                Registered Agent Service ($125/year)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="certificateOfGoodStanding" value="25">
+                                            <label class="form-check-label" for="certificateOfGoodStanding">
+                                                Certificate of Good Standing ($25)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="rushFiling" value="50">
+                                            <label class="form-check-label" for="rushFiling">
+                                                Rush Filing ($50)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <button class="btn btn-primary btn-lg" onclick="calculateForeignQualification()">
+                                <i class="fas fa-calculator me-2"></i>Calculate Foreign Qualification Costs
+                            </button>
+                        </div>
+                        
+                        <div id="foreign-qualification-results" class="mt-4" style="display: none;">
+                            <div class="alert alert-info border-0">
+                                <h5 class="fw-bold mb-3">💰 Foreign Qualification Cost Breakdown</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="border rounded p-3">
+                                            <h6 class="fw-bold mb-2">{{ state.name }} Foreign Qualification Fee:</h6>
+                                            <p class="h5 text-primary mb-0">$<span id="qualificationFee">0</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="border rounded p-3">
+                                            <h6 class="fw-bold mb-2">Additional Services:</h6>
+                                            <p class="h5 text-success mb-0">$<span id="additionalServices">0</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="border rounded p-3 bg-primary bg-opacity-10">
+                                            <h6 class="fw-bold mb-2">Total Estimated Cost:</h6>
+                                            <p class="h4 text-primary mb-0">$<span id="totalQualificationCost">0</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Foreign Qualification Checklist -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">📋 Foreign Qualification Checklist</h2>
+            <p class="text-muted mb-0">Complete checklist for qualifying your out-of-state business in {{ state.name }}</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="row g-4">
+                            <!-- Pre-Filing Requirements -->
+                            <div class="col-md-6">
+                                <h5 class="fw-bold text-primary mb-3">📝 Pre-Filing Requirements</h5>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check1">
+                                    <label class="form-check-label" for="check1">
+                                        <strong>Certificate of Good Standing</strong><br>
+                                        <small class="text-muted">Obtain from your origin state (usually $25-50)</small>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check2">
+                                    <label class="form-check-label" for="check2">
+                                        <strong>Business Name Availability</strong><br>
+                                        <small class="text-muted">Verify your business name is available in {{ state.name }}</small>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check3">
+                                    <label class="form-check-label" for="check3">
+                                        <strong>Registered Agent</strong><br>
+                                        <small class="text-muted">Designate a {{ state.name }} registered agent</small>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check4">
+                                    <label class="form-check-label" for="check4">
+                                        <strong>Business Address</strong><br>
+                                        <small class="text-muted">Establish a physical presence or virtual address</small>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Filing Requirements -->
+                            <div class="col-md-6">
+                                <h5 class="fw-bold text-success mb-3">📄 Filing Requirements</h5>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check5">
+                                    <label class="form-check-label" for="check5">
+                                        <strong>Application for Authority</strong><br>
+                                        <small class="text-muted">File with {{ state.name }} Secretary of State</small>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check6">
+                                    <label class="form-check-label" for="check6">
+                                        <strong>Filing Fee Payment</strong><br>
+                                        <small class="text-muted">Pay {{ state.name }} foreign qualification fee</small>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check7">
+                                    <label class="form-check-label" for="check7">
+                                        <strong>Certificate of Existence</strong><br>
+                                        <small class="text-muted">Attach from your origin state</small>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check8">
+                                    <label class="form-check-label" for="check8">
+                                        <strong>Operating Agreement</strong><br>
+                                        <small class="text-muted">Update to reflect {{ state.name }} operations</small>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Post-Filing Requirements -->
+                            <div class="col-12">
+                                <h5 class="fw-bold text-warning mb-3">✅ Post-Filing Requirements</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="check9">
+                                            <label class="form-check-label" for="check9">
+                                                <strong>Business License</strong><br>
+                                                <small class="text-muted">Obtain local business license</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="check10">
+                                            <label class="form-check-label" for="check10">
+                                                <strong>Tax Registration</strong><br>
+                                                <small class="text-muted">Register for {{ state.name }} taxes</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="check11">
+                                            <label class="form-check-label" for="check11">
+                                                <strong>Annual Reports</strong><br>
+                                                <small class="text-muted">File annual reports in {{ state.name }}</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <button class="btn btn-outline-primary" onclick="resetChecklist()">
+                                <i class="fas fa-redo me-2"></i>Reset Checklist
+                            </button>
+                            <button class="btn btn-success" onclick="saveChecklist()">
+                                <i class="fas fa-save me-2"></i>Save Progress
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Virtual Address Solutions -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">Virtual Address Solutions for {{ state.name }} Businesses</h2>
+            <p class="text-muted mb-0">Professional business address options without the overhead of physical office space</p>
+        </div>
+        
+        <div class="row g-4 mb-5">
+            <!-- Virtual Office Address -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-building fa-lg text-primary"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0">Virtual Office Address</h5>
+                        </div>
+                        
+                        <p class="text-muted mb-4">Get a professional {{ state.name }} business address for mail handling and legal compliance without the cost of physical office space.</p>
+                        
+                        <h6 class="fw-bold mb-3">What's Included:</h6>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Professional {{ state.name }} business address
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Mail receiving and forwarding
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Legal compliance for LLC formation
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Business license eligibility
+                            </li>
+                        </ul>
+                        
+                        <div class="text-center">
+                            <span class="badge bg-primary fs-6 px-3 py-2">Starting at $29/month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Home Office Address -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-home fa-lg text-success"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0">Home Office Address</h5>
+                        </div>
+                        
+                        <p class="text-muted mb-4">Use your residential address for your {{ state.name }} business - perfect for home-based entrepreneurs and small operations.</p>
+                        
+                        <h6 class="fw-bold mb-3">Considerations:</h6>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                No additional monthly costs
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                Address becomes public record
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                May affect home insurance
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Valid for LLC formation
+                            </li>
+                        </ul>
+                        
+                        <div class="text-center">
+                            <span class="badge bg-success fs-6 px-3 py-2">Free</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Professional Business Address -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-briefcase fa-lg text-info"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0">Professional Business Address</h5>
+                        </div>
+                        
+                        <p class="text-muted mb-4">Premium {{ state.name }} business address with additional services like meeting rooms and reception support.</p>
+                        
+                        <h6 class="fw-bold mb-3">Premium Features:</h6>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Professional {{ state.name }} business address
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Mail handling and forwarding
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Meeting room access
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Reception and phone answering
+                            </li>
+                        </ul>
+                        
+                        <div class="text-center">
+                            <span class="badge bg-info fs-6 px-3 py-2">Starting at $99/month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="/virtual-address" class="btn btn-outline-primary">
+                <i class="fas fa-map-marker-alt me-2"></i>Learn More About Virtual Addresses
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Additional Resources -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">Additional Resources for {{ state.name }} Business Owners</h2>
+            <p class="text-muted mb-0">Government resources and business development tools to help your {{ state.name }} business succeed</p>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Government Resources -->
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-landmark fa-lg text-primary"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0">Government Resources</h5>
+                        </div>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <a href="https://www.sos.{{ state.abbr.lower() }}.gov" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                    <div class="border rounded p-3 h-100 hover-shadow transition-all">
+                                        <i class="fas fa-flag text-primary mb-2"></i>
+                                        <h6 class="fw-bold mb-1">{{ state.name }} Secretary of State</h6>
+                                        <p class="small text-muted mb-0">Business registration and compliance</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="https://www.{{ state.abbr.lower() }}.gov" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                    <div class="border rounded p-3 h-100 hover-shadow transition-all">
+                                        <i class="fas fa-flag text-primary mb-2"></i>
+                                        <h6 class="fw-bold mb-1">{{ state.name }} State Government</h6>
+                                        <p class="small text-muted mb-0">State business resources and regulations</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="https://www.irs.gov" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                    <div class="border rounded p-3 h-100 hover-shadow transition-all">
+                                        <i class="fas fa-file-invoice-dollar text-primary mb-2"></i>
+                                        <h6 class="fw-bold mb-1">IRS Business Center</h6>
+                                        <p class="small text-muted mb-0">Tax information and EIN application</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="https://www.sba.gov" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                    <div class="border rounded p-3 h-100 hover-shadow transition-all">
+                                        <i class="fas fa-chart-line text-primary mb-2"></i>
+                                        <h6 class="fw-bold mb-1">Small Business Administration</h6>
+                                        <p class="small text-muted mb-0">Federal business resources and loans</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Business Development -->
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-chart-line fa-lg text-success"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0">Business Development Resources</h5>
+                        </div>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <a href="https://www.score.org" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                    <div class="border rounded p-3 h-100 hover-shadow transition-all">
+                                        <i class="fas fa-users text-success mb-2"></i>
+                                        <h6 class="fw-bold mb-1">SCORE Mentoring</h6>
+                                        <p class="small text-muted mb-0">Free business mentoring and advice</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="https://www.sba.gov/local-assistance" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                    <div class="border rounded p-3 h-100 hover-shadow transition-all">
+                                        <i class="fas fa-map-marker-alt text-success mb-2"></i>
+                                        <h6 class="fw-bold mb-1">Local SBA Resources</h6>
+                                        <p class="small text-muted mb-0">Find local business assistance</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="https://www.census.gov/quickfacts" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                    <div class="border rounded p-3 h-100 hover-shadow transition-all">
+                                        <i class="fas fa-chart-bar text-success mb-2"></i>
+                                        <h6 class="fw-bold mb-1">Census Business Data</h6>
+                                        <p class="small text-muted mb-0">Market research and demographics</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="https://www.bls.gov" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                    <div class="border rounded p-3 h-100 hover-shadow transition-all">
+                                        <i class="fas fa-briefcase text-success mb-2"></i>
+                                        <h6 class="fw-bold mb-1">Bureau of Labor Statistics</h6>
+                                        <p class="small text-muted mb-0">Industry and employment data</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <div class="alert alert-info border-0">
+                <h6 class="fw-bold mb-2">About These Resources</h6>
+                <p class="mb-0">The links above are provided for your convenience and connect to official government websites, business development organizations, and trusted business resources. These external websites are not affiliated with our directory and may have different terms of service and privacy policies. We recommend reviewing each website's information and consulting with appropriate professionals for your specific business needs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- {{ state.name }} LLC Formation Cost Calculator -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">💰 {{ state.name }} LLC Formation Cost Calculator</h2>
+            <p class="text-muted mb-0">Calculate the total cost to form your LLC in {{ state.name }} including state fees and service provider costs</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="row g-4">
+                            <!-- Calculator Form -->
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">Calculate Your Costs</h5>
+                                
+                                <div class="mb-3">
+                                    <label for="serviceProvider" class="form-label fw-bold">Service Provider</label>
+                                    <select class="form-select" id="serviceProvider">
+                                        <option value="northwest">Northwest Registered Agent ($39)</option>
+                                        <option value="filenow">FileNow ($79)</option>
+                                        <option value="bizee">Bizee ($99)</option>
+                                        <option value="legalzoom">LegalZoom ($79)</option>
+                                        <option value="diy">DIY (Self-filing)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="registeredAgent" class="form-label fw-bold">Registered Agent Service</label>
+                                    <select class="form-select" id="registeredAgent">
+                                        <option value="included">Included with formation (1st year free)</option>
+                                        <option value="separate">Separate service ($125/year)</option>
+                                        <option value="none">I'll handle myself</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="einService" class="form-label fw-bold">EIN Application</label>
+                                    <select class="form-select" id="einService">
+                                        <option value="included">Included with formation</option>
+                                        <option value="separate">Separate service ($25)</option>
+                                        <option value="free">I'll apply myself (free)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="operatingAgreement" class="form-label fw-bold">Operating Agreement</label>
+                                    <select class="form-select" id="operatingAgreement">
+                                        <option value="included">Included with formation</option>
+                                        <option value="separate">Separate service ($50)</option>
+                                        <option value="free">I'll create myself (free)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="rushFiling" class="form-label fw-bold">Rush Filing</label>
+                                    <select class="form-select" id="rushFiling">
+                                        <option value="no">Standard processing (free)</option>
+                                        <option value="yes">Expedited processing (+$50)</option>
+                                    </select>
+                                </div>
+                                
+                                <button class="btn btn-primary w-100" onclick="calculateCosts()">
+                                    <i class="fas fa-calculator me-2"></i>Calculate Total Cost
+                                </button>
+                            </div>
+                            
+                            <!-- Results Display -->
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">Cost Breakdown</h5>
+                                
+                                <div id="costResults" class="d-none">
+                                    <div class="border rounded p-3 mb-3">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Service Provider Fee:</span>
+                                            <span id="providerFee">$0</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>{{ state.name }} State Filing Fee:</span>
+                                            <span id="stateFee">${{ states_data[state.name.lower().replace(' ', '-')].formation_fee }}</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Registered Agent (1st year):</span>
+                                            <span id="agentFee">$0</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>EIN Application:</span>
+                                            <span id="einFee">$0</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Operating Agreement:</span>
+                                            <span id="agreementFee">$0</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Rush Filing:</span>
+                                            <span id="rushFee">$0</span>
+                                        </div>
+                                        <hr>
+                                        <div class="d-flex justify-content-between fw-bold">
+                                            <span>Total Formation Cost:</span>
+                                            <span id="totalCost" class="text-primary">$0</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alert alert-info border-0">
+                                        <h6 class="fw-bold mb-2">Annual Costs After Formation:</h6>
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span>Registered Agent (year 2+):</span>
+                                            <span id="annualAgentFee">$125/year</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span>{{ state.name }} Annual Report:</span>
+                                            <span id="annualReportFee">${{ states_data[state.name.lower().replace(' ', '-')].annual_fee if states_data[state.name.lower().replace(' ', '-')].annual_fee else 'Varies' }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div id="costPlaceholder" class="text-center text-muted">
+                                    <i class="fas fa-calculator fa-3x mb-3"></i>
+                                    <p>Select your options and click "Calculate Total Cost" to see your breakdown</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <div class="alert alert-warning border-0">
+                                <h6 class="fw-bold mb-2">Important Notes:</h6>
+                                <ul class="mb-0 small">
+                                    <li>Prices shown are estimates and may vary by provider</li>
+                                    <li>{{ state.name }} state filing fee: ${{ states_data[state.name.lower().replace(' ', '-')].formation_fee }}</li>
+                                    <li>Annual report fee: ${{ states_data[state.name.lower().replace(' ', '-')].annual_fee if states_data[state.name.lower().replace(' ', '-')].annual_fee else 'Varies' }}</li>
+                                    <li>Always verify current pricing with your chosen service provider</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Delaware vs {{ state.name }} LLC Formation -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">🏛️ Delaware vs {{ state.name }} LLC Formation</h2>
+            <p class="text-muted mb-0">Should you form your LLC in Delaware or {{ state.name }}? Understand the key differences and costs.</p>
+        </div>
+        
+        <div class="row g-4 mb-5">
+            <!-- Delaware LLC -->
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-flag fa-lg text-primary"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0">Delaware LLC Formation</h5>
+                        </div>
+                        
+                        <h6 class="fw-bold text-success mb-3">Why People Choose Delaware:</h6>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Business-Friendly Courts:</strong> Specialized Court of Chancery
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Privacy Protection:</strong> No public disclosure of owners
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Flexible Structure:</strong> Minimal restrictions on operations
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Tax Advantages:</strong> No state income tax for out-of-state operations
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Investor Preference:</strong> Familiar to venture capitalists
+                            </li>
+                        </ul>
+                        
+                        <h6 class="fw-bold text-primary mb-2">Delaware LLC Costs:</h6>
+                        <div class="border rounded p-3 mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Formation Fee:</span>
+                                <span>$90</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Annual Franchise Tax:</span>
+                                <span>$300</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Registered Agent:</span>
+                                <span>$125/year</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between fw-bold">
+                                <span>Total Annual Cost:</span>
+                                <span class="text-primary">$515</span>
+                            </div>
+                        </div>
+                        
+                        <h6 class="fw-bold text-warning mb-2">Considerations:</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-1">
+                                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                Must register as foreign LLC in {{ state.name }} if doing business there
+                            </li>
+                            <li class="mb-1">
+                                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                Additional {{ state.name }} taxes and fees may apply
+                            </li>
+                            <li class="mb-1">
+                                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                More complex compliance requirements
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- {{ state.name }} LLC -->
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-map-marker-alt fa-lg text-success"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0">{{ state.name }} LLC Formation</h5>
+                        </div>
+                        
+                        <h6 class="fw-bold text-success mb-3">Why Choose {{ state.name }}:</h6>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Local Operations:</strong> Simpler if doing business in {{ state.name }}
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Lower Costs:</strong> No foreign LLC registration fees
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Simpler Compliance:</strong> Single state requirements
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Local Support:</strong> Easier access to legal and accounting help
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>State Benefits:</strong> Access to {{ state.name }} business programs
+                            </li>
+                        </ul>
+                        
+                        <h6 class="fw-bold text-primary mb-2">{{ state.name }} LLC Costs:</h6>
+                        <div class="border rounded p-3 mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Formation Fee:</span>
+                                <span>${{ states_data[state.name.lower().replace(' ', '-')].formation_fee }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Annual Report Fee:</span>
+                                <span>${{ states_data[state.name.lower().replace(' ', '-')].annual_fee if states_data[state.name.lower().replace(' ', '-')].annual_fee else 'Varies' }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Registered Agent:</span>
+                                <span>$125/year</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between fw-bold">
+                                <span>Total Annual Cost:</span>
+                                <span class="text-success">${{ (states_data[state.name.lower().replace(' ', '-')].annual_fee or 0) + 125 }}</span>
+                            </div>
+                        </div>
+                        
+                        <h6 class="fw-bold text-success mb-2">Advantages:</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-1">
+                                <i class="fas fa-check text-success me-2"></i>
+                                No foreign LLC registration required
+                            </li>
+                            <li class="mb-1">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Simpler tax filing requirements
+                            </li>
+                            <li class="mb-1">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Local business support networks
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decision Quiz -->
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <h4 class="fw-bold mb-3">🤔 Which is Better for You?</h4>
+                            <p class="text-muted mb-3">Answer these questions to see if Delaware or {{ state.name }} LLC formation is right for your business.</p>
+                            <div class="alert alert-warning border-0" role="alert">
+                                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                <strong>Disclaimer:</strong> This is not legal or accounting advice. Please consult with a qualified professional for your specific situation.
+                            </div>
+                        </div>
+                        
+                        <div class="row g-4">
+                            <!-- Question 1 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">1. Where will your business primarily operate?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="location" id="location1" value="delaware">
+                                        <label class="form-check-label small" for="location1">Nationwide or multiple states</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="location" id="location2" value="state">
+                                        <label class="form-check-label small" for="location2">Primarily in {{ state.name }}</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="location" id="location3" value="local">
+                                        <label class="form-check-label small" for="location3">Local {{ state.name }} business only</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 2 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">2. Do you plan to raise venture capital or outside investment?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="investment" id="investment1" value="delaware">
+                                        <label class="form-check-label small" for="investment1">Yes, significant outside investment</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="investment" id="investment2" value="maybe">
+                                        <label class="form-check-label small" for="investment2">Maybe some investors later</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="investment" id="investment3" value="state">
+                                        <label class="form-check-label small" for="investment3">No, self-funded or small loans</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 3 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">3. How important is privacy protection to you?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="privacy" id="privacy1" value="delaware">
+                                        <label class="form-check-label small" for="privacy1">Very important - maximum privacy</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="privacy" id="privacy2" value="moderate">
+                                        <label class="form-check-label small" for="privacy2">Somewhat important</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="privacy" id="privacy3" value="state">
+                                        <label class="form-check-label small" for="privacy3">Not a major concern</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 4 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold mb-3">4. What's your budget for ongoing compliance costs?</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="budget" id="budget1" value="delaware">
+                                        <label class="form-check-label small" for="budget1">Higher budget for premium services</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="budget" id="budget2" value="moderate">
+                                        <label class="form-check-label small" for="budget2">Moderate budget</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="budget" id="budget3" value="state">
+                                        <label class="form-check-label small" for="budget3">Minimize ongoing costs</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <button class="btn btn-primary btn-lg" onclick="calculateDelawareDecision()">
+                                <i class="fas fa-balance-scale me-2"></i>Get My Recommendation
+                            </button>
+                        </div>
+                        
+                        <div id="delaware-result" class="mt-4" style="display: none;">
+                            <div class="alert alert-info border-0">
+                                <h5 class="fw-bold mb-3">📋 How to Interpret Results</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="border rounded p-3 h-100">
+                                            <h6 class="fw-bold text-primary mb-2">Mostly Delaware → Consider Delaware LLC</h6>
+                                            <p class="small mb-0">Best for businesses seeking maximum privacy, nationwide operations, or planning significant outside investment. Higher costs but more flexibility.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="border rounded p-3 h-100">
+                                            <h6 class="fw-bold text-success mb-2">Mostly {{ state.name }} → {{ state.name }} LLC Recommended</h6>
+                                            <p class="small mb-0">Ideal for local businesses, cost-conscious entrepreneurs, or those primarily operating in {{ state.name }}. Simpler compliance and lower costs.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Business Calculators -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">Business Calculators & Tools</h2>
+            <p class="text-muted mb-0">Essential calculators to help you plan and manage your {{ state.name }} business</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0 shadow-sm h-100 hover-shadow transition-all">
+                    <div class="card-body p-4 text-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-calculator fa-2x text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Business Loan Calculator</h5>
+                        <p class="text-muted small mb-3">Calculate loan payments, interest rates, and financing options for your business.</p>
+                        <a href="/calculators/business-loan" class="btn btn-primary btn-sm w-100">
+                            <i class="fas fa-arrow-right me-2"></i>Calculate Loan
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0 shadow-sm h-100 hover-shadow transition-all">
+                    <div class="card-body p-4 text-center">
+                        <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-chart-line fa-2x text-success"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">ROI Calculator</h5>
+                        <p class="text-muted small mb-3">Calculate return on investment for business decisions and marketing campaigns.</p>
+                        <a href="/calculators/roi" class="btn btn-success btn-sm w-100">
+                            <i class="fas fa-arrow-right me-2"></i>Calculate ROI
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0 shadow-sm h-100 hover-shadow transition-all">
+                    <div class="card-body p-4 text-center">
+                        <div class="bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-balance-scale fa-2x text-warning"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Break-Even Calculator</h5>
+                        <p class="text-muted small mb-3">Determine when your business will start making a profit.</p>
+                        <a href="/calculators/break-even" class="btn btn-warning btn-sm w-100">
+                            <i class="fas fa-arrow-right me-2"></i>Calculate Break-Even
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0 shadow-sm h-100 hover-shadow transition-all">
+                    <div class="card-body p-4 text-center">
+                        <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-percentage fa-2x text-info"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Equity Split Calculator</h5>
+                        <p class="text-muted small mb-3">Calculate fair equity distribution among business partners and investors.</p>
+                        <a href="/calculators/equity-split" class="btn btn-info btn-sm w-100">
+                            <i class="fas fa-arrow-right me-2"></i>Calculate Equity
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/calculators" class="btn btn-outline-primary">
+                <i class="fas fa-calculator me-2"></i>View All Calculators
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Business Address & Privacy Solutions for {{ state.name }} -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">🏢 Business Address & Privacy Solutions for {{ state.name }}</h2>
+            <p class="text-muted mb-0">Protect your privacy and establish a professional business presence in {{ state.name }} with these address solutions</p>
+        </div>
+        
+        <!-- Address Solutions Overview -->
+        <div class="row g-4 mb-5">
+            <!-- Virtual Office Address -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-building fa-lg text-primary"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0">Virtual Office Address</h5>
+                        </div>
+                        
+                        <p class="text-muted mb-4">Professional {{ state.name }} business address for mail handling and legal compliance without physical office space.</p>
+                        
+                        <h6 class="fw-bold mb-3">What's Included:</h6>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Professional {{ state.name }} business address
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Mail receiving and forwarding
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Legal compliance for LLC formation
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Business license eligibility
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Privacy protection from public records
+                            </li>
+                        </ul>
+                        
+                        <div class="text-center">
+                            <span class="badge bg-primary fs-6 px-3 py-2">Starting at $29/month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Home Office Address -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-home fa-lg text-success"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0">Home Office Address</h5>
+                        </div>
+                        
+                        <p class="text-muted mb-4">Use your residential address for your {{ state.name }} business - perfect for home-based entrepreneurs.</p>
+                        
+                        <h6 class="fw-bold mb-3">Considerations:</h6>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                No additional monthly costs
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                Address becomes public record
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                May affect home insurance
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Valid for LLC formation
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                No privacy protection
+                            </li>
+                        </ul>
+                        
+                        <div class="text-center">
+                            <span class="badge bg-success fs-6 px-3 py-2">Free</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Premium Business Address -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-briefcase fa-lg text-info"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0">Premium Business Address</h5>
+                        </div>
+                        
+                        <p class="text-muted mb-4">Premium {{ state.name }} business address with additional services and maximum privacy protection.</p>
+                        
+                        <h6 class="fw-bold mb-3">Premium Features:</h6>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Professional {{ state.name }} business address
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Mail handling and forwarding
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Meeting room access
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Reception and phone answering
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Maximum privacy protection
+                            </li>
+                        </ul>
+                        
+                        <div class="text-center">
+                            <span class="badge bg-info fs-6 px-3 py-2">Starting at $99/month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Privacy Protection Options -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-4">🔒 Privacy Protection Options for {{ state.name }} Businesses</h4>
+                        
+                        <div class="row g-4">
+                            <!-- Privacy Level 1 -->
+                            <div class="col-md-4">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold text-primary mb-3">Basic Privacy Protection</h6>
+                                    <ul class="list-unstyled mb-3">
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Virtual business address
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Mail forwarding service
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Basic public record protection
+                                        </li>
+                                    </ul>
+                                    <div class="text-center">
+                                        <span class="badge bg-primary">$29/month</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Privacy Level 2 -->
+                            <div class="col-md-4">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold text-success mb-3">Enhanced Privacy Protection</h6>
+                                    <ul class="list-unstyled mb-3">
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            All basic features
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Owner information protection
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Mail scanning and digital access
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Legal compliance assistance
+                                        </li>
+                                    </ul>
+                                    <div class="text-center">
+                                        <span class="badge bg-success">$59/month</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Privacy Level 3 -->
+                            <div class="col-md-4">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold text-info mb-3">Maximum Privacy Protection</h6>
+                                    <ul class="list-unstyled mb-3">
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            All enhanced features
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Complete anonymity services
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Legal document preparation
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Compliance monitoring
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Dedicated privacy consultant
+                                        </li>
+                                    </ul>
+                                    <div class="text-center">
+                                        <span class="badge bg-info">$149/month</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- State-Specific Considerations -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-4">📍 {{ state.name }}-Specific Address & Privacy Considerations</h4>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <h6 class="fw-bold text-primary mb-3">Legal Requirements in {{ state.name }}:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <i class="fas fa-gavel text-primary me-2"></i>
+                                        <strong>Registered Agent:</strong> Must have a physical address in {{ state.name }}
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-gavel text-primary me-2"></i>
+                                        <strong>Business Address:</strong> Can use virtual address for business purposes
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-gavel text-primary me-2"></i>
+                                        <strong>Public Records:</strong> {{ state.name }} has {{ 'strong' if states_data[state.name.lower().replace(' ', '-')].privacy_protection else 'moderate' }} privacy protection
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-gavel text-primary me-2"></i>
+                                        <strong>Annual Reports:</strong> Required with current address information
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <h6 class="fw-bold text-success mb-3">Privacy Best Practices for {{ state.name }}:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <i class="fas fa-shield-alt text-success me-2"></i>
+                                        <strong>Use Virtual Address:</strong> Keep personal address off public records
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-shield-alt text-success me-2"></i>
+                                        <strong>Separate Registered Agent:</strong> Different from business address
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-shield-alt text-success me-2"></i>
+                                        <strong>Mail Forwarding:</strong> Professional mail handling service
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-shield-alt text-success me-2"></i>
+                                        <strong>Regular Updates:</strong> Keep address information current
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Address Comparison Table -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-4">📊 Address Solution Comparison for {{ state.name }}</h4>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>Home Address</th>
+                                        <th>Virtual Address</th>
+                                        <th>Premium Address</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Monthly Cost</strong></td>
+                                        <td><span class="badge bg-success">Free</span></td>
+                                        <td><span class="badge bg-primary">$29</span></td>
+                                        <td><span class="badge bg-info">$99</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Privacy Protection</strong></td>
+                                        <td><i class="fas fa-times text-danger"></i> None</td>
+                                        <td><i class="fas fa-check text-success"></i> Basic</td>
+                                        <td><i class="fas fa-check text-success"></i> Maximum</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Professional Image</strong></td>
+                                        <td><i class="fas fa-times text-danger"></i> Poor</td>
+                                        <td><i class="fas fa-check text-success"></i> Good</td>
+                                        <td><i class="fas fa-check text-success"></i> Excellent</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mail Handling</strong></td>
+                                        <td><i class="fas fa-times text-danger"></i> Personal</td>
+                                        <td><i class="fas fa-check text-success"></i> Professional</td>
+                                        <td><i class="fas fa-check text-success"></i> Premium</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Legal Compliance</strong></td>
+                                        <td><i class="fas fa-check text-success"></i> Yes</td>
+                                        <td><i class="fas fa-check text-success"></i> Yes</td>
+                                        <td><i class="fas fa-check text-success"></i> Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Meeting Rooms</strong></td>
+                                        <td><i class="fas fa-times text-danger"></i> No</td>
+                                        <td><i class="fas fa-times text-danger"></i> No</td>
+                                        <td><i class="fas fa-check text-success"></i> Yes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recommendations -->
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-4">💡 Recommendations for {{ state.name }} Business Owners</h4>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold text-success mb-3">For Home-Based Businesses</h6>
+                                    <p class="small mb-3">If you're starting small and cost-conscious:</p>
+                                    <ul class="list-unstyled small">
+                                        <li class="mb-1">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Start with virtual address ($29/month)
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Upgrade to premium later if needed
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Consider privacy protection add-ons
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold text-primary mb-3">For Growing Businesses</h6>
+                                    <p class="small mb-3">If you need professional image and privacy:</p>
+                                    <ul class="list-unstyled small">
+                                        <li class="mb-1">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Premium business address ($99/month)
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Enhanced privacy protection
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Meeting room access included
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="border rounded p-3 h-100">
+                                    <h6 class="fw-bold text-info mb-3">For High-Profile Businesses</h6>
+                                    <p class="small mb-3">If maximum privacy is essential:</p>
+                                    <ul class="list-unstyled small">
+                                        <li class="mb-1">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Maximum privacy protection ($149/month)
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Complete anonymity services
+                                        </li>
+                                        <li class="mb-1">
+                                            <i class="fas fa-check text-success me-2"></i>
+                                            Dedicated privacy consultant
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <div class="alert alert-warning border-0">
+                                <h6 class="fw-bold mb-2">Important Notes for {{ state.name }}:</h6>
+                                <ul class="mb-0 small">
+                                    <li>Virtual addresses are legal and widely used in {{ state.name }}</li>
+                                    <li>You must still have a registered agent with a physical {{ state.name }} address</li>
+                                    <li>Annual reports require current address information</li>
+                                    <li>Consider your business type and privacy needs when choosing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cities in {{ state.name }} -->
+<section class="py-5 bg-light">
+    <div class="container">
+        {% if cities %}
+        <!-- Cities Header -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Cities with LLC Formation Services in {{ state.name }}</h2>
+                <p class="text-muted mb-4">Browse cities in {{ state.name }} with the most LLC formation services. Each city shows the total number of providers available.</p>
+            </div>
+        </div>
+        
+        <!-- Cities Grid -->
+        <div class="row g-4">
+            {% for city_data in cities %}
+            <div class="col-lg-6 col-xl-4">
+                <div class="card h-100 border-0 shadow-sm hover-shadow transition-all">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="flex-grow-1">
+                                <h5 class="card-title mb-1 fw-bold">
+                                    <a href="/city/{{ state.name.lower().replace(' ', '-') }}/{{ city_data.slug }}" class="text-decoration-none text-dark">
+                                        {{ city_data.city }}, {{ state.abbr }}
+                                    </a>
+                                </h5>
+                                <p class="text-muted mb-0">{{ state.name }}</p>
+                            </div>
+                            <div class="text-end">
+                                <div class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                                    <i class="fas fa-building me-1"></i>
+                                    {{ city_data.count }} Services
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex gap-2 mb-3">
+                            <span class="badge bg-success bg-opacity-10 text-success px-2 py-1">
+                                <i class="fas fa-check me-1"></i>Licensed Providers
+                            </span>
+                            <span class="badge bg-info bg-opacity-10 text-info px-2 py-1">
+                                <i class="fas fa-star me-1"></i>Top Rated
+                            </span>
+                        </div>
+                        
+                        <p class="text-muted mb-4">Find {{ city_data.count }} professional LLC formation services in {{ city_data.city }}. Get expert help with business registration and compliance.</p>
+                        
+                        <div class="d-flex gap-2 mt-auto">
+                            <a href="/city/{{ state.name.lower().replace(' ', '-') }}/{{ city_data.slug }}" class="btn btn-primary flex-fill">
+                                View {{ city_data.count }} Services
+                            </a>
+                            <a href="/cities" class="btn btn-outline-primary">
+                                Top Cities
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% else %}
+        <!-- No Cities Found -->
+        <div class="text-center py-5">
+            <i class="fas fa-building fa-4x text-muted mb-4"></i>
+            <h3>No cities found in {{ state.name }}</h3>
+            <p class="text-muted mb-4">We don't have any cities listed for this state yet.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="/cities" class="btn btn-primary">Browse All Cities</a>
+                <a href="/all-locations" class="btn btn-outline-primary">View All Locations</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- General Disclaimer -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info border-0" role="alert">
+                    <div class="d-flex align-items-start">
+                        <i class="fas fa-info-circle fa-2x text-info me-3 mt-1"></i>
+                        <div>
+                            <h5 class="fw-bold text-info mb-3">General Disclaimer & Important Information</h5>
+                            
+                            <div class="row g-4">
+                                <!-- Legal Disclaimer -->
+                                <div class="col-md-6">
+                                    <div class="border rounded p-3 h-100">
+                                        <h6 class="fw-bold text-danger mb-2">
+                                            <i class="fas fa-gavel me-2"></i>Legal Disclaimer
+                                        </h6>
+                                        <p class="small mb-2"><strong>This website does not provide legal advice.</strong> The information contained herein is for educational and informational purposes only and should not be construed as legal advice or legal opinion.</p>
+                                        <p class="small mb-0">Always consult with a qualified attorney or legal professional for advice specific to your situation and jurisdiction.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Accounting Disclaimer -->
+                                <div class="col-md-6">
+                                    <div class="border rounded p-3 h-100">
+                                        <h6 class="fw-bold text-warning mb-2">
+                                            <i class="fas fa-calculator me-2"></i>Accounting Disclaimer
+                                        </h6>
+                                        <p class="small mb-2"><strong>This website does not provide accounting or tax advice.</strong> Tax laws and regulations are complex and subject to change.</p>
+                                        <p class="small mb-0">Consult with a qualified accountant, CPA, or tax professional for advice specific to your financial situation.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Pricing Disclaimer -->
+                                <div class="col-md-6">
+                                    <div class="border rounded p-3 h-100">
+                                        <h6 class="fw-bold text-primary mb-2">
+                                            <i class="fas fa-dollar-sign me-2"></i>Pricing Disclaimer
+                                        </h6>
+                                        <p class="small mb-2"><strong>Pricing information may be outdated.</strong> All prices, fees, and costs shown are for informational purposes only and may not reflect current rates.</p>
+                                        <ul class="small mb-0">
+                                            <li>Verify current pricing with service providers</li>
+                                            <li>Check state filing fees with {{ state.name }} Secretary of State</li>
+                                            <li>Confirm all costs before proceeding</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <!-- Affiliate Disclosure -->
+                                <div class="col-md-6">
+                                    <div class="border rounded p-3 h-100">
+                                        <h6 class="fw-bold text-success mb-2">
+                                            <i class="fas fa-handshake me-2"></i>Affiliate Disclosure
+                                        </h6>
+                                        <p class="small mb-2"><strong>This website may receive compensation</strong> from affiliate links and partnerships with service providers mentioned on this page.</p>
+                                        <p class="small mb-0">This helps support our free content and research. We strive to provide unbiased, accurate information regardless of affiliate relationships.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Educational Purpose -->
+                                <div class="col-12">
+                                    <div class="border rounded p-3 bg-primary bg-opacity-10">
+                                        <h6 class="fw-bold text-primary mb-2">
+                                            <i class="fas fa-graduation-cap me-2"></i>Educational Purpose Statement
+                                        </h6>
+                                        <p class="small mb-2"><strong>This website is designed for educational and informational purposes only.</strong> Our goal is to help entrepreneurs understand business formation options and make informed decisions.</p>
+                                        <p class="small mb-0">We encourage you to conduct your own research, consult with professionals, and verify all information before making business decisions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Recommended Actions -->
+                            <div class="mt-4 p-3 bg-white rounded">
+                                <h6 class="fw-bold mb-2">Recommended Actions:</h6>
+                                <div class="row g-2">
+                                    <div class="col-md-6">
+                                        <ul class="list-unstyled small">
+                                            <li class="mb-1">
+                                                <i class="fas fa-external-link-alt text-primary me-2"></i>
+                                                <a href="https://www.sos.{{ state.abbr.lower() }}.gov" target="_blank" rel="noopener noreferrer" class="text-decoration-none">Visit {{ state.abbr }} Secretary of State</a>
+                                            </li>
+                                            <li class="mb-1">
+                                                <i class="fas fa-phone text-primary me-2"></i>
+                                                Contact service providers for current quotes
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="list-unstyled small">
+                                            <li class="mb-1">
+                                                <i class="fas fa-user-tie text-primary me-2"></i>
+                                                Consult with legal and tax professionals
+                                            </li>
+                                            <li class="mb-1">
+                                                <i class="fas fa-calendar-alt text-primary me-2"></i>
+                                                Verify current pricing and requirements
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-3 bg-light rounded">
+                                <p class="mb-0 small text-muted">
+                                    <strong>Last Updated:</strong> January 2025 | 
+                                    <strong>Next Review:</strong> April 2025
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function calculateResult() {
+    const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
+    let aCount = 0, bCount = 0, cCount = 0;
+    
+    // Count answers
+    questions.forEach(q => {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected) {
+            if (selected.value === 'A') aCount++;
+            else if (selected.value === 'B') bCount++;
+            else if (selected.value === 'C') cCount++;
+        }
+    });
+    
+    // Show results
+    const resultDiv = document.getElementById('quiz-result');
+    resultDiv.style.display = 'block';
+    
+    // Scroll to results
+    resultDiv.scrollIntoView({ behavior: 'smooth' });
+    
+    // Optional: Add personalized recommendation
+    let recommendation = '';
+    if (aCount > bCount && aCount > cCount) {
+        recommendation = 'Based on your answers, an LLC appears to be the best fit for your business needs.';
+    } else if (bCount > aCount && bCount > cCount) {
+        recommendation = 'Based on your answers, an S Corporation appears to be the best fit for your business needs.';
+    } else if (cCount > aCount && cCount > bCount) {
+        recommendation = 'Based on your answers, a C Corporation appears to be the best fit for your business needs.';
+    } else {
+        recommendation = 'Your answers are mixed. Consider consulting with a business attorney or tax professional for personalized advice.';
+    }
+    
+    // Add recommendation to results if you want
+    const recommendationDiv = document.createElement('div');
+    recommendationDiv.className = 'alert alert-success border-0 mt-3';
+    recommendationDiv.innerHTML = `<strong>Your Recommendation:</strong> ${recommendation}`;
+    resultDiv.appendChild(recommendationDiv);
+}
+
+function calculateCosts() {
+    // Get form values
+    const serviceProvider = document.getElementById('serviceProvider').value;
+    const registeredAgent = document.getElementById('registeredAgent').value;
+    const einService = document.getElementById('einService').value;
+    const operatingAgreement = document.getElementById('operatingAgreement').value;
+    const rushFiling = document.getElementById('rushFiling').value;
+    
+    // Service provider costs
+    const providerCosts = {
+        'northwest': 39,
+        'filenow': 79,
+        'bizee': 99,
+        'legalzoom': 79,
+        'diy': 0
+    };
+    
+    // Calculate costs
+    let providerFee = providerCosts[serviceProvider] || 0;
+    let agentFee = 0;
+    let einFee = 0;
+    let agreementFee = 0;
+    let rushFee = 0;
+    
+    // Registered Agent fee
+    if (registeredAgent === 'separate') {
+        agentFee = 125;
+    }
+    
+    // EIN Application fee
+    if (einService === 'separate') {
+        einFee = 25;
+    }
+    
+    // Operating Agreement fee
+    if (operatingAgreement === 'separate') {
+        agreementFee = 50;
+    }
+    
+    // Rush filing fee
+    if (rushFiling === 'yes') {
+        rushFee = 50;
+    }
+    
+    // Get state filing fee from the page
+    const stateFeeElement = document.getElementById('stateFee');
+    const stateFeeText = stateFeeElement.textContent;
+    const stateFee = parseInt(stateFeeText.replace('$', '')) || 0;
+    
+    // Calculate total
+    const totalCost = providerFee + stateFee + agentFee + einFee + agreementFee + rushFee;
+    
+    // Update display
+    document.getElementById('providerFee').textContent = `$${providerFee}`;
+    document.getElementById('agentFee').textContent = `$${agentFee}`;
+    document.getElementById('einFee').textContent = `$${einFee}`;
+    document.getElementById('agreementFee').textContent = `$${agreementFee}`;
+    document.getElementById('rushFee').textContent = `$${rushFee}`;
+    document.getElementById('totalCost').textContent = `$${totalCost}`;
+    
+    // Show results
+    document.getElementById('costResults').classList.remove('d-none');
+    document.getElementById('costPlaceholder').classList.add('d-none');
+    
+    // Scroll to results
+    document.getElementById('costResults').scrollIntoView({ behavior: 'smooth' });
+}
+
+function calculateDelawareDecision() {
+    // Get form values
+    const location = document.querySelector('input[name="location"]:checked')?.value;
+    const investment = document.querySelector('input[name="investment"]:checked')?.value;
+    const privacy = document.querySelector('input[name="privacy"]:checked')?.value;
+    const budget = document.querySelector('input[name="budget"]:checked')?.value;
+    
+    // Check if all questions are answered
+    if (!location || !investment || !privacy || !budget) {
+        alert('Please answer all questions before getting your recommendation.');
+        return;
+    }
+    
+    // Calculate scores
+    let delawareScore = 0;
+    let stateScore = 0;
+    
+    // Location scoring
+    if (location === 'delaware') delawareScore += 2;
+    else if (location === 'state') stateScore += 2;
+    else stateScore += 1;
+    
+    // Investment scoring
+    if (investment === 'delaware') delawareScore += 2;
+    else if (investment === 'state') stateScore += 2;
+    else stateScore += 1;
+    
+    // Privacy scoring
+    if (privacy === 'delaware') delawareScore += 2;
+    else if (privacy === 'state') stateScore += 2;
+    else stateScore += 1;
+    
+    // Budget scoring
+    if (budget === 'delaware') delawareScore += 1;
+    else if (budget === 'state') stateScore += 2;
+    else stateScore += 1;
+    
+    // Determine recommendation
+    let recommendation = '';
+    let recommendationType = '';
+    
+    if (delawareScore > stateScore) {
+        recommendationType = 'delaware';
+        recommendation = 'Based on your answers, forming your LLC in Delaware appears to be the best fit for your business needs. Delaware offers strong privacy protection, business-friendly courts, and is preferred by many investors.';
+    } else if (stateScore > delawareScore) {
+        recommendationType = 'state';
+        recommendation = 'Based on your answers, forming your LLC in your home state appears to be the best fit for your business needs. This offers simpler compliance, lower costs, and easier access to local support.';
+    } else {
+        recommendationType = 'mixed';
+        recommendation = 'Your answers show a mixed preference. Consider consulting with a business attorney or tax professional to evaluate your specific situation and determine the best choice for your business.';
+    }
+    
+    // Show results
+    const resultDiv = document.getElementById('delaware-result');
+    resultDiv.style.display = 'block';
+    
+    // Scroll to results
+    resultDiv.scrollIntoView({ behavior: 'smooth' });
+    
+    // Add personalized recommendation
+    const recommendationDiv = document.createElement('div');
+    recommendationDiv.className = 'alert alert-success border-0 mt-3';
+    recommendationDiv.innerHTML = `<strong>Your Recommendation:</strong> ${recommendation}`;
+    resultDiv.appendChild(recommendationDiv);
+}
+
+function calculateForeignQualification() {
+    // Get form values
+    const originState = document.getElementById('originState').value;
+    const businessType = document.getElementById('businessType').value;
+    
+    // Check if required fields are filled
+    if (!originState || !businessType) {
+        alert('Please select both origin state and business type.');
+        return;
+    }
+    
+    // Foreign qualification fees by state (simplified - you can expand this)
+    const qualificationFees = {
+        'CA': 150, 'NY': 250, 'TX': 750, 'FL': 150, 'IL': 150,
+        'PA': 250, 'OH': 125, 'GA': 100, 'NC': 250, 'MI': 50,
+        'NJ': 125, 'VA': 100, 'WA': 180, 'AZ': 150, 'MA': 500,
+        'TN': 100, 'IN': 90, 'MO': 50, 'MD': 100, 'CO': 100,
+        'MN': 135, 'WI': 100, 'AL': 150, 'SC': 110, 'LA': 150,
+        'KY': 50, 'OR': 275, 'OK': 300, 'CT': 120, 'UT': 70,
+        'IA': 50, 'NV': 200, 'AR': 300, 'MS': 50, 'KS': 35,
+        'NM': 150, 'NE': 10, 'WV': 25, 'ID': 100, 'HI': 50,
+        'NH': 100, 'ME': 150, 'RI': 150, 'MT': 70, 'DE': 200,
+        'SD': 150, 'ND': 135, 'AK': 350, 'VT': 125, 'WY': 50
+    };
+    
+    // Calculate qualification fee
+    const qualificationFee = qualificationFees[originState] || 100; // Default fee
+    
+    // Calculate additional services
+    let additionalServices = 0;
+    const registeredAgent = document.getElementById('registeredAgent').checked;
+    const certificateOfGoodStanding = document.getElementById('certificateOfGoodStanding').checked;
+    const rushFiling = document.getElementById('rushFiling').checked;
+    
+    if (registeredAgent) additionalServices += 125;
+    if (certificateOfGoodStanding) additionalServices += 25;
+    if (rushFiling) additionalServices += 50;
+    
+    // Calculate total
+    const totalCost = qualificationFee + additionalServices;
+    
+    // Update display
+    document.getElementById('qualificationFee').textContent = qualificationFee;
+    document.getElementById('additionalServices').textContent = additionalServices;
+    document.getElementById('totalQualificationCost').textContent = totalCost;
+    
+    // Show results
+    document.getElementById('foreign-qualification-results').style.display = 'block';
+    
+    // Scroll to results
+    document.getElementById('foreign-qualification-results').scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetChecklist() {
+    // Reset all checkboxes
+    for (let i = 1; i <= 11; i++) {
+        document.getElementById(`check${i}`).checked = false;
+    }
+    
+    // Clear saved progress
+    localStorage.removeItem('foreignQualificationChecklist');
+    
+    alert('Checklist has been reset!');
+}
+
+function saveChecklist() {
+    // Save checkbox states to localStorage
+    const checklistState = {};
+    for (let i = 1; i <= 11; i++) {
+        checklistState[`check${i}`] = document.getElementById(`check${i}`).checked;
+    }
+    
+    localStorage.setItem('foreignQualificationChecklist', JSON.stringify(checklistState));
+    
+    alert('Checklist progress saved! You can return later to continue.');
+}
+
+// Load saved checklist progress on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const savedChecklist = localStorage.getItem('foreignQualificationChecklist');
+    if (savedChecklist) {
+        const checklistState = JSON.parse(savedChecklist);
+        for (let i = 1; i <= 11; i++) {
+            const checkbox = document.getElementById(`check${i}`);
+            if (checkbox && checklistState[`check${i}`] !== undefined) {
+                checkbox.checked = checklistState[`check${i}`];
+            }
+        }
+    }
+});
+</script>
+
+
+
+{% endblock %}

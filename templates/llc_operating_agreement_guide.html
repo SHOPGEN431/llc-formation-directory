@@ -1,0 +1,466 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-3">
+                        <li class="breadcrumb-item"><a href="/" class="text-white-50">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url_for('resources') }}" class="text-white-50">Resources</a></li>
+                        <li class="breadcrumb-item active text-white">Operating Agreement Guide</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4 fw-bold mb-3">LLC Operating Agreement Guide</h1>
+                <p class="lead mb-4">Essential guide to creating a comprehensive operating agreement for your LLC. Learn what to include and why it's crucial for your business.</p>
+                
+                <!-- Quick Stats -->
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">Required</div>
+                            <small class="text-white-75">In Most States</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">10+ Sections</div>
+                            <small class="text-white-75">Key Components</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">Liability Protection</div>
+                            <small class="text-white-75">Legal Shield</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-white bg-opacity-10 rounded-3 p-4 border border-white border-opacity-25">
+                    <i class="fas fa-file-contract fa-4x text-white mb-3"></i>
+                    <h5 class="text-white mb-2">Protect Your Business</h5>
+                    <p class="text-white-75 mb-0">Create a solid legal foundation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What is an Operating Agreement -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="h3 fw-bold mb-4">What is an LLC Operating Agreement?</h2>
+                <p class="text-muted mb-4">An LLC operating agreement is a legal document that outlines the ownership structure, management procedures, and operational rules for your limited liability company. While not always required by state law, it's essential for protecting your business and defining how your LLC will operate.</p>
+                
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-shield-alt text-primary me-2"></i>Liability Protection</h5>
+                                <p class="text-muted mb-0">Helps maintain the "corporate veil" that protects your personal assets from business liabilities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-users text-success me-2"></i>Ownership Structure</h5>
+                                <p class="text-muted mb-0">Clearly defines member ownership percentages, voting rights, and management responsibilities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-handshake text-info me-2"></i>Dispute Resolution</h5>
+                                <p class="text-muted mb-0">Establishes procedures for handling conflicts and making important business decisions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-chart-line text-warning me-2"></i>Business Growth</h5>
+                                <p class="text-muted mb-0">Provides a framework for adding new members, selling ownership, and expanding operations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Why You Need One</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Protects personal assets</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Prevents member disputes</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Defines profit distribution</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Required by many banks</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Overrides state defaults</li>
+                            <li class="mb-0"><i class="fas fa-check text-success me-2"></i>Professional credibility</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Sections -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Essential Sections of an Operating Agreement</h2>
+                <p class="text-muted mb-0">Every comprehensive operating agreement should include these key sections.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span class="fw-bold">1</span>
+                            </div>
+                            <h5 class="mb-0">Basic Information</h5>
+                        </div>
+                        <ul class="text-muted mb-0">
+                            <li>LLC name and address</li>
+                            <li>Purpose and business activities</li>
+                            <li>State of formation</li>
+                            <li>Effective date</li>
+                            <li>Registered agent information</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span class="fw-bold">2</span>
+                            </div>
+                            <h5 class="mb-0">Member Information</h5>
+                        </div>
+                        <ul class="text-muted mb-0">
+                            <li>Member names and addresses</li>
+                            <li>Ownership percentages</li>
+                            <li>Initial capital contributions</li>
+                            <li>Member classifications</li>
+                            <li>Admission of new members</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span class="fw-bold">3</span>
+                            </div>
+                            <h5 class="mb-0">Management Structure</h5>
+                        </div>
+                        <ul class="text-muted mb-0">
+                            <li>Member-managed vs. manager-managed</li>
+                            <li>Voting rights and procedures</li>
+                            <li>Decision-making authority</li>
+                            <li>Officer positions (if any)</li>
+                            <li>Management meetings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span class="fw-bold">4</span>
+                            </div>
+                            <h5 class="mb-0">Financial Provisions</h5>
+                        </div>
+                        <ul class="text-muted mb-0">
+                            <li>Profit and loss distribution</li>
+                            <li>Capital accounts</li>
+                            <li>Additional contributions</li>
+                            <li>Tax allocations</li>
+                            <li>Financial reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span class="fw-bold">5</span>
+                            </div>
+                            <h5 class="mb-0">Transfer Restrictions</h5>
+                        </div>
+                        <ul class="text-muted mb-0">
+                            <li>Right of first refusal</li>
+                            <li>Approval requirements</li>
+                            <li>Valuation methods</li>
+                            <li>Buyout procedures</li>
+                            <li>Involuntary transfers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span class="fw-bold">6</span>
+                            </div>
+                            <h5 class="mb-0">Dissolution & Exit</h5>
+                        </div>
+                        <ul class="text-muted mb-0">
+                            <li>Dissolution triggers</li>
+                            <li>Winding up procedures</li>
+                            <li>Asset distribution</li>
+                            <li>Member withdrawal</li>
+                            <li>Death/disability provisions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Single vs Multi-Member -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Single-Member vs. Multi-Member LLCs</h2>
+                <p class="text-muted mb-0">Operating agreements differ based on the number of members in your LLC.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-user me-2"></i>Single-Member LLC</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">Simplified Structure:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>One owner with full control</li>
+                            <li>Simpler decision-making</li>
+                            <li>Direct profit distribution</li>
+                            <li>Easier management structure</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">Key Considerations:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>Succession planning</li>
+                            <li>Asset protection</li>
+                            <li>Future member additions</li>
+                            <li>Business continuity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-users me-2"></i>Multi-Member LLC</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">Complex Structure:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>Multiple owners with shared control</li>
+                            <li>Voting and decision-making procedures</li>
+                            <li>Profit/loss distribution rules</li>
+                            <li>Member dispute resolution</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">Key Considerations:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>Ownership percentages</li>
+                            <li>Voting rights and procedures</li>
+                            <li>Buyout and exit strategies</li>
+                            <li>Conflict resolution methods</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tools and Resources -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Tools and Resources</h2>
+                <p class="text-muted mb-0">Use our tools and resources to help create your operating agreement.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-calculator text-primary fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">Equity Split Calculator</h5>
+                        </div>
+                        <p class="text-muted mb-3">Calculate fair ownership percentages for multi-member LLCs based on contributions and responsibilities.</p>
+                        <a href="{{ url_for('equity_split_calculator') }}" class="btn btn-primary">Calculate Equity</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-question-circle text-success fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">Business Structure Quiz</h5>
+                        </div>
+                        <p class="text-muted mb-3">Determine if an LLC is the right structure for your business and understand the implications.</p>
+                        <a href="{{ url_for('business_structure_quiz') }}" class="btn btn-success">Take Quiz</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-calculator text-info fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">LLC Cost Calculator</h5>
+                        </div>
+                        <p class="text-muted mb-3">Calculate the total cost of forming your LLC, including legal document preparation.</p>
+                        <a href="{{ url_for('llc_cost_calculator') }}" class="btn btn-info">Calculate Costs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- External Resources -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">External Resources</h2>
+                <p class="text-muted mb-0">Additional resources to help you create a comprehensive operating agreement.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">Legal Templates</h5>
+                        <ul class="text-muted mb-3">
+                            <li><a href="https://www.rocketlawyer.com/business/llc-operating-agreement" target="_blank" class="text-decoration-none">Rocket Lawyer Templates</a></li>
+                            <li><a href="https://www.legalzoom.com/business/llc/llc-operating-agreement" target="_blank" class="text-decoration-none">LegalZoom Templates</a></li>
+                            <li><a href="https://www.nolo.com/legal-encyclopedia/llc-operating-agreement" target="_blank" class="text-decoration-none">Nolo Legal Resources</a></li>
+                        </ul>
+                        <div class="bg-warning bg-opacity-10 rounded-3 p-3">
+                            <small class="text-muted">Always have a legal professional review your agreement before signing.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">State Requirements</h5>
+                        <ul class="text-muted mb-3">
+                            <li><a href="https://www.sba.gov/business-guide/launch-your-business/choose-business-structure/limited-liability-corporation-llc" target="_blank" class="text-decoration-none">SBA LLC Guide</a></li>
+                            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/limited-liability-company-llc" target="_blank" class="text-decoration-none">IRS LLC Information</a></li>
+                            <li><a href="https://www.findlaw.com/smallbusiness/business-structures/llc-operating-agreement.html" target="_blank" class="text-decoration-none">FindLaw Guide</a></li>
+                        </ul>
+                        <div class="bg-info bg-opacity-10 rounded-3 p-3">
+                            <small class="text-muted">Requirements vary by state - check your state's specific laws.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">Professional Services</h5>
+                        <ul class="text-muted mb-3">
+                            <li><a href="https://www.avvo.com/business-law" target="_blank" class="text-decoration-none">Find Business Attorneys</a></li>
+                            <li><a href="https://www.lawyers.com/business-law/" target="_blank" class="text-decoration-none">Lawyers.com Directory</a></li>
+                            <li><a href="https://www.martindale.com/business-law/" target="_blank" class="text-decoration-none">Martindale Legal Directory</a></li>
+                        </ul>
+                        <div class="bg-success bg-opacity-10 rounded-3 p-3">
+                            <small class="text-muted">Consider hiring an attorney for complex multi-member agreements.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h3 class="fw-bold mb-3">Ready to Create Your Operating Agreement?</h3>
+                <p class="mb-0">Use our tools and resources to create a comprehensive operating agreement that protects your business and defines clear operational procedures.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('equity_split_calculator') }}" class="btn btn-light btn-lg me-2">Calculate Equity</a>
+                <a href="{{ url_for('llc_formation_guide') }}" class="btn btn-outline-light btn-lg">Formation Guide</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Disclaimer -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info mb-0">
+                    <h6 class="fw-bold mb-2">📋 Important Disclaimer:</h6>
+                    <p class="mb-0">This guide provides general information about LLC operating agreements. Laws and requirements vary by state. We strongly recommend consulting with a qualified attorney to review and customize your operating agreement for your specific situation. This information is for educational purposes only and should not be considered legal advice.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

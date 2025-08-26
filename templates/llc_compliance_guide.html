@@ -1,0 +1,497 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-3">
+                        <li class="breadcrumb-item"><a href="/" class="text-white-50">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url_for('resources') }}" class="text-white-50">Resources</a></li>
+                        <li class="breadcrumb-item active text-white">LLC Compliance Guide</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4 fw-bold mb-3">LLC Compliance Guide</h1>
+                <p class="lead mb-4">Complete guide to maintaining your LLC in good standing. Learn about annual reports, state filings, and ongoing compliance requirements.</p>
+                
+                <!-- Quick Stats -->
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">Annual</div>
+                            <small class="text-white-75">Reports Required</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">$0-$500</div>
+                            <small class="text-white-75">Annual Filing Fees</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">Good Standing</div>
+                            <small class="text-white-75">Maintain Status</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-white bg-opacity-10 rounded-3 p-4 border border-white border-opacity-25">
+                    <i class="fas fa-clipboard-check fa-4x text-white mb-3"></i>
+                    <h5 class="text-white mb-2">Stay Compliant</h5>
+                    <p class="text-white-75 mb-0">Maintain your business legally</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Compliance Overview -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="h3 fw-bold mb-4">LLC Compliance Overview</h2>
+                <p class="text-muted mb-4">Maintaining LLC compliance is crucial for preserving your liability protection and keeping your business in good standing. Regular filings and updates ensure your LLC remains legally active.</p>
+                
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-shield-alt text-primary me-2"></i>Liability Protection</h5>
+                                <p class="text-muted mb-0">Maintaining compliance helps preserve the "corporate veil" that protects your personal assets.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-check-circle text-success me-2"></i>Good Standing</h5>
+                                <p class="text-muted mb-0">Regular compliance keeps your LLC in good standing with state authorities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-handshake text-info me-2"></i>Business Credibility</h5>
+                                <p class="text-muted mb-0">Compliance demonstrates professionalism and reliability to customers and partners.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i>Avoid Penalties</h5>
+                                <p class="text-muted mb-0">Timely compliance prevents late fees, penalties, and potential dissolution.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-calendar me-2"></i>Key Deadlines</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-clock text-warning me-2"></i>Annual Reports</li>
+                            <li class="mb-2"><i class="fas fa-clock text-warning me-2"></i>Tax Filings</li>
+                            <li class="mb-2"><i class="fas fa-clock text-warning me-2"></i>License Renewals</li>
+                            <li class="mb-2"><i class="fas fa-clock text-warning me-2"></i>Registered Agent</li>
+                            <li class="mb-2"><i class="fas fa-clock text-warning me-2"></i>State Filings</li>
+                            <li class="mb-0"><i class="fas fa-clock text-warning me-2"></i>Business Records</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Annual Requirements -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Annual Compliance Requirements</h2>
+                <p class="text-muted mb-0">These are the most common annual requirements for LLCs across all states.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-file-alt me-2"></i>Annual Reports</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">What They Include:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>Current business address</li>
+                            <li>Registered agent information</li>
+                            <li>Member/manager details</li>
+                            <li>Business activities</li>
+                            <li>Filing fee payment</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">Deadlines:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>Varies by state (anniversary date)</li>
+                            <li>Some states have specific due dates</li>
+                            <li>Late fees apply for missed deadlines</li>
+                            <li>Online filing available in most states</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-calculator me-2"></i>Tax Filings</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">Federal Requirements:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>Personal tax return (April 15)</li>
+                            <li>Partnership return (March 15)</li>
+                            <li>Estimated tax payments (quarterly)</li>
+                            <li>Self-employment tax</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">State Requirements:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>State income tax returns</li>
+                            <li>State estimated payments</li>
+                            <li>Franchise tax (if applicable)</li>
+                            <li>Sales tax filings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ongoing Requirements -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Ongoing Compliance Requirements</h2>
+                <p class="text-muted mb-0">Maintain these requirements throughout the year to keep your LLC compliant.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Registered Agent</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">Requirements:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>Maintain active registered agent</li>
+                            <li>Update agent information</li>
+                            <li>Ensure availability during hours</li>
+                            <li>Accept service of process</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">Updates Needed:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>Address changes</li>
+                            <li>Agent resignation</li>
+                            <li>Service cancellation</li>
+                            <li>Annual renewals</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">Business Records</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">Required Records:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>Articles of Organization</li>
+                            <li>Operating Agreement</li>
+                            <li>Meeting minutes</li>
+                            <li>Financial statements</li>
+                            <li>Tax returns</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">Retention:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>Keep records organized</li>
+                            <li>Store securely</li>
+                            <li>Maintain for 7+ years</li>
+                            <li>Update regularly</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="mb-0">Licenses & Permits</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">Common Requirements:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>Business licenses</li>
+                            <li>Professional licenses</li>
+                            <li>Sales tax permits</li>
+                            <li>Industry-specific permits</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">Renewals:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>Annual renewals</li>
+                            <li>Continuing education</li>
+                            <li>Fee payments</li>
+                            <li>Compliance updates</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- State-Specific Requirements -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">State-Specific Requirements</h2>
+                <p class="text-muted mb-0">Compliance requirements vary significantly by state. Check your state's specific requirements.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">High-Compliance States:</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="bg-light rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">Delaware</h6>
+                                    <ul class="text-muted mb-0 small">
+                                        <li>Annual report: $300</li>
+                                        <li>Franchise tax</li>
+                                        <li>Complex calculations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-light rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">California</h6>
+                                    <ul class="text-muted mb-0 small">
+                                        <li>Annual report: $20</li>
+                                        <li>Franchise tax: $800</li>
+                                        <li>LLC tax: $800+</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">Low-Compliance States:</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="bg-light rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">Wyoming</h6>
+                                    <ul class="text-muted mb-0 small">
+                                        <li>Annual report: $50</li>
+                                        <li>No state income tax</li>
+                                        <li>Simple requirements</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-light rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">Nevada</h6>
+                                    <ul class="text-muted mb-0 small">
+                                        <li>Annual report: $150</li>
+                                        <li>No state income tax</li>
+                                        <li>Business license: $200</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tools and Resources -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Compliance Tools and Resources</h2>
+                <p class="text-muted mb-0">Use our tools and resources to help maintain your LLC compliance.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-clipboard-check text-primary fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">Foreign Qualification Checklist</h5>
+                        </div>
+                        <p class="text-muted mb-3">Determine if you need foreign qualification and track your multi-state compliance requirements.</p>
+                        <a href="{{ url_for('foreign_qualification_checklist') }}" class="btn btn-primary">Check Requirements</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-calculator text-success fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">LLC Cost Calculator</h5>
+                        </div>
+                        <p class="text-muted mb-3">Calculate ongoing compliance costs including annual reports and state fees.</p>
+                        <a href="{{ url_for('llc_cost_calculator') }}" class="btn btn-success">Calculate Costs</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-file-contract text-info fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">Operating Agreement Guide</h5>
+                        </div>
+                        <p class="text-muted mb-3">Learn about maintaining and updating your operating agreement for compliance.</p>
+                        <a href="{{ url_for('llc_operating_agreement_guide') }}" class="btn btn-info">View Guide</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- External Resources -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">External Compliance Resources</h2>
+                <p class="text-muted mb-0">Additional resources to help with your LLC compliance requirements.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">State Resources</h5>
+                        <ul class="text-muted mb-3">
+                            <li><a href="https://www.sba.gov/business-guide/manage-your-business/stay-legally-compliant" target="_blank" class="text-decoration-none">SBA Compliance Guide</a></li>
+                            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed" target="_blank" class="text-decoration-none">IRS Business Center</a></li>
+                            <li><a href="https://www.nolo.com/legal-encyclopedia/llc-compliance" target="_blank" class="text-decoration-none">Nolo Compliance Guide</a></li>
+                        </ul>
+                        <div class="bg-primary bg-opacity-10 rounded-3 p-3">
+                            <small class="text-muted">Official government and legal resources for business compliance.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">Compliance Services</h5>
+                        <ul class="text-muted mb-3">
+                            <li><a href="https://www.legalzoom.com/business/llc/llc-compliance" target="_blank" class="text-decoration-none">LegalZoom Compliance</a></li>
+                            <li><a href="https://www.rocketlawyer.com/business/llc-compliance" target="_blank" class="text-decoration-none">Rocket Lawyer</a></li>
+                            <li><a href="https://www.zenbusiness.com/llc-compliance/" target="_blank" class="text-decoration-none">ZenBusiness</a></li>
+                        </ul>
+                        <div class="bg-success bg-opacity-10 rounded-3 p-3">
+                            <small class="text-muted">Professional compliance services and monitoring.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">Professional Help</h5>
+                        <ul class="text-muted mb-3">
+                            <li><a href="https://www.aicpa.org/" target="_blank" class="text-decoration-none">Find a CPA</a></li>
+                            <li><a href="https://www.avvo.com/business-law" target="_blank" class="text-decoration-none">Business Attorneys</a></li>
+                            <li><a href="https://www.sba.gov/local-assistance" target="_blank" class="text-decoration-none">SBA Local Assistance</a></li>
+                        </ul>
+                        <div class="bg-warning bg-opacity-10 rounded-3 p-3">
+                            <small class="text-muted">Consider professional help for complex compliance situations.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h3 class="fw-bold mb-3">Stay Compliant with Your LLC</h3>
+                <p class="mb-0">Use our tools and resources to maintain your LLC in good standing and avoid costly penalties.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('foreign_qualification_checklist') }}" class="btn btn-light btn-lg me-2">Check Requirements</a>
+                <a href="{{ url_for('llc_cost_calculator') }}" class="btn btn-outline-light btn-lg">Calculate Costs</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Disclaimer -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info mb-0">
+                    <h6 class="fw-bold mb-2">📋 Important Disclaimer:</h6>
+                    <p class="mb-0">This guide provides general information about LLC compliance requirements. Laws and requirements vary by state and change frequently. We strongly recommend consulting with a qualified attorney or compliance professional for specific advice related to your situation. This information is for educational purposes only and should not be considered legal advice.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

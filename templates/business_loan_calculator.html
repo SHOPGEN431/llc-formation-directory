@@ -1,0 +1,752 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-3">
+                        <li class="breadcrumb-item"><a href="/" class="text-white-50">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/calculators" class="text-white-50">Calculators</a></li>
+                        <li class="breadcrumb-item active text-white">Business Loan</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4 fw-bold mb-3">Business Loan Calculator</h1>
+                <p class="lead mb-4">Calculate business loan payments, interest costs, and amortization schedules. Compare different loan options to find the best financing for your business.</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-white bg-opacity-10 rounded-3 p-4 border border-white border-opacity-25">
+                    <i class="fas fa-money-bill-wave fa-4x text-white mb-3"></i>
+                    <h4 class="text-white mb-2">Free Tool</h4>
+                    <p class="mb-0 text-white-75">Professional loan analysis</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Calculator Form -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-4">Enter Your Loan Information</h3>
+                        
+                        <form id="loanForm">
+                            <!-- Loan Details -->
+                            <div class="mb-4">
+                                <h5 class="fw-bold mb-3 text-primary">
+                                    <i class="fas fa-dollar-sign me-2"></i>Loan Details
+                                </h5>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="loanAmount" class="form-label">Loan Amount ($)</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="loanAmount" name="loanAmount" value="100000" min="0" step="0.01">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="interestRate" class="form-label">Annual Interest Rate (%)</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="interestRate" name="interestRate" value="7.5" min="0" step="0.01">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="loanTerm" class="form-label">Loan Term (Years)</label>
+                                        <input type="number" class="form-control" id="loanTerm" name="loanTerm" value="5" min="1" max="30">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="paymentFrequency" class="form-label">Payment Frequency</label>
+                                        <select class="form-select" id="paymentFrequency" name="paymentFrequency">
+                                            <option value="12">Monthly</option>
+                                            <option value="26">Bi-weekly</option>
+                                            <option value="52">Weekly</option>
+                                            <option value="4">Quarterly</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Additional Costs -->
+                            <div class="mb-4">
+                                <h5 class="fw-bold mb-3 text-success">
+                                    <i class="fas fa-plus-circle me-2"></i>Additional Costs
+                                </h5>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="originationFee" class="form-label">Origination Fee ($)</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="originationFee" name="originationFee" value="1000" min="0" step="0.01">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="monthlyFees" class="form-label">Monthly Fees ($)</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="monthlyFees" name="monthlyFees" value="25" min="0" step="0.01">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-calculator me-2"></i>Calculate Loan Payments
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results Panel -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm sticky-top" style="top: 20px;">
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-4">Loan Results</h4>
+                        
+                        <div id="results" style="display: none;">
+                            <!-- Monthly Payment -->
+                            <div class="text-center mb-4 p-3 bg-primary bg-opacity-10 rounded">
+                                <h5 class="fw-bold text-primary mb-2">Monthly Payment</h5>
+                                <div class="display-6 fw-bold text-primary" id="monthlyPayment">$0</div>
+                                <p class="mb-0 text-muted">Principal + Interest</p>
+                            </div>
+                            
+                            <!-- Loan Summary -->
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold">Total Interest:</span>
+                                    <span class="fw-bold text-success" id="totalInterest">$0</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold">Total Payments:</span>
+                                    <span class="text-muted" id="totalPayments">$0</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold">Loan Term:</span>
+                                    <span class="text-muted" id="loanTermDisplay">0 years</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold">APR:</span>
+                                    <span class="text-success" id="aprDisplay">0%</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Payment Breakdown -->
+                            <div class="mb-4">
+                                <h6 class="fw-bold mb-3">Payment Breakdown</h6>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>Principal:</span>
+                                    <span class="fw-bold text-primary" id="principalPayment">$0</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>Interest:</span>
+                                    <span class="fw-bold text-success" id="interestPayment">$0</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>Fees:</span>
+                                    <span class="fw-bold text-warning" id="feesPayment">$0</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Export Results -->
+                            <button class="btn btn-outline-primary w-100" onclick="exportResults()">
+                                <i class="fas fa-download me-2"></i>Export Results
+                            </button>
+                        </div>
+                        
+                        <div id="noResults" class="text-center text-muted">
+                            <i class="fas fa-money-bill-wave fa-3x mb-3"></i>
+                            <p>Enter your loan information and click calculate to see your payment analysis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Amortization Schedule -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">Amortization Schedule</h2>
+            <p class="text-muted mb-0">See how your payments are applied over the life of the loan</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="table-responsive">
+                            <table class="table table-sm" id="amortizationTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Payment #</th>
+                                        <th>Payment</th>
+                                        <th>Principal</th>
+                                        <th>Interest</th>
+                                        <th>Fees</th>
+                                        <th>Remaining Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="amortizationBody">
+                                    <!-- Amortization data will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Loan Comparison -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">Loan Comparison Tool</h2>
+            <p class="text-muted mb-0">Compare different loan options side by side</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Loan Option A</label>
+                                <input type="number" class="form-control" id="loanA" placeholder="Loan Amount" value="100000">
+                                <input type="number" class="form-control mt-2" id="rateA" placeholder="Interest Rate %" value="7.5">
+                                <input type="number" class="form-control mt-2" id="termA" placeholder="Term (Years)" value="5">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Loan Option B</label>
+                                <input type="number" class="form-control" id="loanB" placeholder="Loan Amount" value="100000">
+                                <input type="number" class="form-control mt-2" id="rateB" placeholder="Interest Rate %" value="6.5">
+                                <input type="number" class="form-control mt-2" id="termB" placeholder="Term (Years)" value="7">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Loan Option C</label>
+                                <input type="number" class="form-control" id="loanC" placeholder="Loan Amount" value="100000">
+                                <input type="number" class="form-control mt-2" id="rateC" placeholder="Interest Rate %" value="8.0">
+                                <input type="number" class="form-control mt-2" id="termC" placeholder="Term (Years)" value="3">
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <button class="btn btn-primary" onclick="compareLoans()">
+                                <i class="fas fa-chart-bar me-2"></i>Compare Loans
+                            </button>
+                        </div>
+                        
+                        <div id="comparisonResults" class="mt-4" style="display: none;">
+                            <h6 class="fw-bold mb-3">Comparison Results</h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Option</th>
+                                            <th>Monthly Payment</th>
+                                            <th>Total Interest</th>
+                                            <th>Total Cost</th>
+                                            <th>Best For</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="comparisonTable">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">How Loan Calculations Work</h2>
+            <p class="text-muted mb-0">Understand the formula behind loan payment calculations</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4 text-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-calculator fa-2x text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Payment Formula</h5>
+                        <p class="text-muted mb-0">P = L[c(1 + c)^n]/[(1 + c)^n - 1] where P=payment, L=loan amount, c=monthly rate, n=total payments</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4 text-center">
+                        <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-chart-line fa-2x text-success"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Amortization</h5>
+                        <p class="text-muted mb-0">Early payments are mostly interest, later payments are mostly principal.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4 text-center">
+                        <div class="bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-lightbulb fa-2x text-warning"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Loan Insights</h5>
+                        <p class="text-muted mb-0">Use this calculator to compare loan options and understand total borrowing costs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Top 25 Cities & States -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3">Top 25 Cities & States for LLC Formation</h2>
+            <p class="lead text-muted">Discover the most popular locations for business formation based on population and business activity.</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="fas fa-map me-2"></i>Top 25 States by Population</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="list-group list-group-flush">
+                                    <a href="/state/california" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>1.</strong> California</span>
+                                        <span class="badge bg-primary rounded-pill">39.5M</span>
+                                    </a>
+                                    <a href="/state/texas" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>2.</strong> Texas</span>
+                                        <span class="badge bg-primary rounded-pill">29.1M</span>
+                                    </a>
+                                    <a href="/state/florida" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>3.</strong> Florida</span>
+                                        <span class="badge bg-primary rounded-pill">21.8M</span>
+                                    </a>
+                                    <a href="/state/new-york" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>4.</strong> New York</span>
+                                        <span class="badge bg-primary rounded-pill">19.5M</span>
+                                    </a>
+                                    <a href="/state/pennsylvania" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>5.</strong> Pennsylvania</span>
+                                        <span class="badge bg-primary rounded-pill">12.8M</span>
+                                    </a>
+                                    <a href="/state/illinois" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>6.</strong> Illinois</span>
+                                        <span class="badge bg-primary rounded-pill">12.7M</span>
+                                    </a>
+                                    <a href="/state/ohio" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>7.</strong> Ohio</span>
+                                        <span class="badge bg-primary rounded-pill">11.7M</span>
+                                    </a>
+                                    <a href="/state/georgia" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>8.</strong> Georgia</span>
+                                        <span class="badge bg-primary rounded-pill">10.7M</span>
+                                    </a>
+                                    <a href="/state/north-carolina" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>9.</strong> North Carolina</span>
+                                        <span class="badge bg-primary rounded-pill">10.4M</span>
+                                    </a>
+                                    <a href="/state/michigan" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>10.</strong> Michigan</span>
+                                        <span class="badge bg-primary rounded-pill">10.0M</span>
+                                    </a>
+                                    <a href="/state/new-jersey" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>11.</strong> New Jersey</span>
+                                        <span class="badge bg-primary rounded-pill">9.3M</span>
+                                    </a>
+                                    <a href="/state/virginia" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>12.</strong> Virginia</span>
+                                        <span class="badge bg-primary rounded-pill">8.6M</span>
+                                    </a>
+                                    <a href="/state/washington" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>13.</strong> Washington</span>
+                                        <span class="badge bg-primary rounded-pill">7.7M</span>
+                                    </a>
+                                    <a href="/state/arizona" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>14.</strong> Arizona</span>
+                                        <span class="badge bg-primary rounded-pill">7.3M</span>
+                                    </a>
+                                    <a href="/state/tennessee" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>15.</strong> Tennessee</span>
+                                        <span class="badge bg-primary rounded-pill">6.9M</span>
+                                    </a>
+                                    <a href="/state/massachusetts" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>16.</strong> Massachusetts</span>
+                                        <span class="badge bg-primary rounded-pill">6.9M</span>
+                                    </a>
+                                    <a href="/state/indiana" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>17.</strong> Indiana</span>
+                                        <span class="badge bg-primary rounded-pill">6.8M</span>
+                                    </a>
+                                    <a href="/state/missouri" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>18.</strong> Missouri</span>
+                                        <span class="badge bg-primary rounded-pill">6.2M</span>
+                                    </a>
+                                    <a href="/state/maryland" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>19.</strong> Maryland</span>
+                                        <span class="badge bg-primary rounded-pill">6.2M</span>
+                                    </a>
+                                    <a href="/state/wisconsin" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>20.</strong> Wisconsin</span>
+                                        <span class="badge bg-primary rounded-pill">5.9M</span>
+                                    </a>
+                                    <a href="/state/colorado" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>21.</strong> Colorado</span>
+                                        <span class="badge bg-primary rounded-pill">5.8M</span>
+                                    </a>
+                                    <a href="/state/minnesota" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>22.</strong> Minnesota</span>
+                                        <span class="badge bg-primary rounded-pill">5.7M</span>
+                                    </a>
+                                    <a href="/state/south-carolina" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>23.</strong> South Carolina</span>
+                                        <span class="badge bg-primary rounded-pill">5.1M</span>
+                                    </a>
+                                    <a href="/state/alabama" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>24.</strong> Alabama</span>
+                                        <span class="badge bg-primary rounded-pill">5.0M</span>
+                                    </a>
+                                    <a href="/state/louisiana" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>25.</strong> Louisiana</span>
+                                        <span class="badge bg-primary rounded-pill">4.7M</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0"><i class="fas fa-city me-2"></i>Top 25 Cities by Population</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="list-group list-group-flush">
+                                    <a href="/city/new-york-ny" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>1.</strong> New York, NY</span>
+                                        <span class="badge bg-success rounded-pill">8.8M</span>
+                                    </a>
+                                    <a href="/city/los-angeles-ca" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>2.</strong> Los Angeles, CA</span>
+                                        <span class="badge bg-success rounded-pill">4.0M</span>
+                                    </a>
+                                    <a href="/city/chicago-il" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>3.</strong> Chicago, IL</span>
+                                        <span class="badge bg-success rounded-pill">2.7M</span>
+                                    </a>
+                                    <a href="/city/houston-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>4.</strong> Houston, TX</span>
+                                        <span class="badge bg-success rounded-pill">2.3M</span>
+                                    </a>
+                                    <a href="/city/phoenix-az" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>5.</strong> Phoenix, AZ</span>
+                                        <span class="badge bg-success rounded-pill">1.6M</span>
+                                    </a>
+                                    <a href="/city/philadelphia-pa" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>6.</strong> Philadelphia, PA</span>
+                                        <span class="badge bg-success rounded-pill">1.6M</span>
+                                    </a>
+                                    <a href="/city/san-antonio-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>7.</strong> San Antonio, TX</span>
+                                        <span class="badge bg-success rounded-pill">1.5M</span>
+                                    </a>
+                                    <a href="/city/san-diego-ca" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>8.</strong> San Diego, CA</span>
+                                        <span class="badge bg-success rounded-pill">1.4M</span>
+                                    </a>
+                                    <a href="/city/dallas-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>9.</strong> Dallas, TX</span>
+                                        <span class="badge bg-success rounded-pill">1.3M</span>
+                                    </a>
+                                    <a href="/city/san-jose-ca" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>10.</strong> San Jose, CA</span>
+                                        <span class="badge bg-success rounded-pill">1.0M</span>
+                                    </a>
+                                    <a href="/city/austin-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>11.</strong> Austin, TX</span>
+                                        <span class="badge bg-success rounded-pill">978K</span>
+                                    </a>
+                                    <a href="/city/jacksonville-fl" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>12.</strong> Jacksonville, FL</span>
+                                        <span class="badge bg-success rounded-pill">949K</span>
+                                    </a>
+                                    <a href="/city/fort-worth-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>13.</strong> Fort Worth, TX</span>
+                                        <span class="badge bg-success rounded-pill">918K</span>
+                                    </a>
+                                    <a href="/city/columbus-oh" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>14.</strong> Columbus, OH</span>
+                                        <span class="badge bg-success rounded-pill">898K</span>
+                                    </a>
+                                    <a href="/city/charlotte-nc" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>15.</strong> Charlotte, NC</span>
+                                        <span class="badge bg-success rounded-pill">885K</span>
+                                    </a>
+                                    <a href="/city/san-francisco-ca" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>16.</strong> San Francisco, CA</span>
+                                        <span class="badge bg-success rounded-pill">873K</span>
+                                    </a>
+                                    <a href="/city/indianapolis-in" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>17.</strong> Indianapolis, IN</span>
+                                        <span class="badge bg-success rounded-pill">863K</span>
+                                    </a>
+                                    <a href="/city/seattle-wa" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>18.</strong> Seattle, WA</span>
+                                        <span class="badge bg-success rounded-pill">744K</span>
+                                    </a>
+                                    <a href="/city/denver-co" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>19.</strong> Denver, CO</span>
+                                        <span class="badge bg-success rounded-pill">727K</span>
+                                    </a>
+                                    <a href="/city/washington-dc" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>20.</strong> Washington, DC</span>
+                                        <span class="badge bg-success rounded-pill">689K</span>
+                                    </a>
+                                    <a href="/city/boston-ma" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>21.</strong> Boston, MA</span>
+                                        <span class="badge bg-success rounded-pill">675K</span>
+                                    </a>
+                                    <a href="/city/el-paso-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>22.</strong> El Paso, TX</span>
+                                        <span class="badge bg-success rounded-pill">679K</span>
+                                    </a>
+                                    <a href="/city/nashville-tn" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>23.</strong> Nashville, TN</span>
+                                        <span class="badge bg-success rounded-pill">689K</span>
+                                    </a>
+                                    <a href="/city/detroit-mi" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>24.</strong> Detroit, MI</span>
+                                        <span class="badge bg-success rounded-pill">674K</span>
+                                    </a>
+                                    <a href="/city/oklahoma-city-ok" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>25.</strong> Oklahoma City, OK</span>
+                                        <span class="badge bg-success rounded-pill">655K</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/cities" class="btn btn-primary btn-lg">
+                <i class="fas fa-search me-2"></i>Browse All Locations
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center">
+            <h3 class="fw-bold mb-4">Ready to Form Your LLC?</h3>
+            <p class="lead mb-4">Now that you know your loan costs, find the perfect LLC formation service for your business.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="/cities" class="btn btn-primary btn-lg">
+                    <i class="fas fa-city me-2"></i>Find Local Services
+                </a>
+                <a href="/calculator/break-even" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-calculator me-2"></i>Break-Even Calculator
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('loanForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    calculateLoan();
+});
+
+function calculateLoan() {
+    // Get form values
+    const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 0;
+    const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
+    const loanTerm = parseFloat(document.getElementById('loanTerm').value) || 1;
+    const paymentFrequency = parseInt(document.getElementById('paymentFrequency').value) || 12;
+    const originationFee = parseFloat(document.getElementById('originationFee').value) || 0;
+    const monthlyFees = parseFloat(document.getElementById('monthlyFees').value) || 0;
+    
+    // Calculate monthly rate and total payments
+    const monthlyRate = annualRate / 100 / 12;
+    const totalPayments = loanTerm * 12;
+    
+    // Calculate monthly payment using loan payment formula
+    const monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / (Math.pow(1 + monthlyRate, totalPayments) - 1);
+    
+    // Calculate totals
+    const totalPayment = monthlyPayment * totalPayments;
+    const totalInterest = totalPayment - loanAmount;
+    const totalFees = (monthlyFees * totalPayments) + originationFee;
+    const totalCost = totalPayment + totalFees;
+    
+    // Calculate APR (simplified)
+    const apr = annualRate + (totalFees / loanAmount / loanTerm * 100);
+    
+    // Display results
+    document.getElementById('monthlyPayment').textContent = '$' + monthlyPayment.toFixed(2);
+    document.getElementById('totalInterest').textContent = '$' + totalInterest.toFixed(2);
+    document.getElementById('totalPayments').textContent = '$' + totalCost.toFixed(2);
+    document.getElementById('loanTermDisplay').textContent = loanTerm + ' year' + (loanTerm !== 1 ? 's' : '');
+    document.getElementById('aprDisplay').textContent = apr.toFixed(2) + '%';
+    
+    // Payment breakdown
+    document.getElementById('principalPayment').textContent = '$' + (loanAmount / totalPayments).toFixed(2);
+    document.getElementById('interestPayment').textContent = '$' + (totalInterest / totalPayments).toFixed(2);
+    document.getElementById('feesPayment').textContent = '$' + (totalFees / totalPayments).toFixed(2);
+    
+    // Show results
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('noResults').style.display = 'none';
+    
+    // Generate amortization schedule
+    generateAmortizationSchedule(loanAmount, monthlyRate, totalPayments, monthlyPayment, monthlyFees);
+}
+
+function generateAmortizationSchedule(principal, monthlyRate, totalPayments, monthlyPayment, monthlyFees) {
+    const tableBody = document.getElementById('amortizationBody');
+    tableBody.innerHTML = '';
+    
+    let remainingBalance = principal;
+    
+    for (let i = 1; i <= Math.min(totalPayments, 12); i++) { // Show first 12 payments
+        const interestPayment = remainingBalance * monthlyRate;
+        const principalPayment = monthlyPayment - interestPayment;
+        remainingBalance -= principalPayment;
+        
+        const row = tableBody.insertRow();
+        row.innerHTML = `
+            <td>${i}</td>
+            <td>$${monthlyPayment.toFixed(2)}</td>
+            <td>$${principalPayment.toFixed(2)}</td>
+            <td>$${interestPayment.toFixed(2)}</td>
+            <td>$${monthlyFees.toFixed(2)}</td>
+            <td>$${Math.max(0, remainingBalance).toFixed(2)}</td>
+        `;
+    }
+    
+    if (totalPayments > 12) {
+        const row = tableBody.insertRow();
+        row.innerHTML = `
+            <td colspan="6" class="text-center text-muted">
+                <em>... and ${totalPayments - 12} more payments</em>
+            </td>
+        `;
+    }
+}
+
+function compareLoans() {
+    const loans = [
+        {
+            name: 'A',
+            amount: parseFloat(document.getElementById('loanA').value) || 0,
+            rate: parseFloat(document.getElementById('rateA').value) || 0,
+            term: parseFloat(document.getElementById('termA').value) || 1
+        },
+        {
+            name: 'B',
+            amount: parseFloat(document.getElementById('loanB').value) || 0,
+            rate: parseFloat(document.getElementById('rateB').value) || 0,
+            term: parseFloat(document.getElementById('termB').value) || 1
+        },
+        {
+            name: 'C',
+            amount: parseFloat(document.getElementById('loanC').value) || 0,
+            rate: parseFloat(document.getElementById('rateC').value) || 0,
+            term: parseFloat(document.getElementById('termC').value) || 1
+        }
+    ];
+    
+    // Calculate for each loan
+    loans.forEach(loan => {
+        const monthlyRate = loan.rate / 100 / 12;
+        const totalPayments = loan.term * 12;
+        const monthlyPayment = loan.amount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / (Math.pow(1 + monthlyRate, totalPayments) - 1);
+        const totalInterest = (monthlyPayment * totalPayments) - loan.amount;
+        const totalCost = monthlyPayment * totalPayments;
+        
+        loan.monthlyPayment = monthlyPayment;
+        loan.totalInterest = totalInterest;
+        loan.totalCost = totalCost;
+    });
+    
+    // Sort by total cost
+    loans.sort((a, b) => a.totalCost - b.totalCost);
+    
+    // Display results
+    const tableBody = document.getElementById('comparisonTable');
+    tableBody.innerHTML = '';
+    
+    loans.forEach((loan, index) => {
+        const bestFor = index === 0 ? 'Lowest Cost' : index === 1 ? 'Middle Option' : 'Highest Cost';
+        const row = tableBody.insertRow();
+        row.innerHTML = `
+            <td><strong>Option ${loan.name}</strong></td>
+            <td class="text-primary fw-bold">$${loan.monthlyPayment.toFixed(2)}</td>
+            <td class="text-success">$${loan.totalInterest.toFixed(2)}</td>
+            <td class="fw-bold">$${loan.totalCost.toFixed(2)}</td>
+            <td><span class="badge bg-${index === 0 ? 'success' : index === 1 ? 'warning' : 'secondary'}">${bestFor}</span></td>
+        `;
+    });
+    
+    document.getElementById('comparisonResults').style.display = 'block';
+}
+
+function exportResults() {
+    const data = {
+        loanAmount: parseFloat(document.getElementById('loanAmount').value) || 0,
+        interestRate: parseFloat(document.getElementById('interestRate').value) || 0,
+        loanTerm: parseFloat(document.getElementById('loanTerm').value) || 1,
+        monthlyPayment: document.getElementById('monthlyPayment').textContent,
+        totalInterest: document.getElementById('totalInterest').textContent,
+        totalPayments: document.getElementById('totalPayments').textContent,
+        apr: document.getElementById('aprDisplay').textContent
+    };
+    
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'business-loan-analysis.json';
+    a.click();
+    URL.revokeObjectURL(url);
+}
+</script>
+{% endblock %}
+
+
+

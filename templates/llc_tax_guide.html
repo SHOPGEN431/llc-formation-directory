@@ -1,0 +1,476 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-3">
+                        <li class="breadcrumb-item"><a href="/" class="text-white-50">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url_for('resources') }}" class="text-white-50">Resources</a></li>
+                        <li class="breadcrumb-item active text-white">LLC Tax Guide</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4 fw-bold mb-3">LLC Tax Guide</h1>
+                <p class="lead mb-4">Complete guide to LLC taxation. Learn about pass-through taxation, self-employment taxes, and filing requirements for your business.</p>
+                
+                <!-- Quick Stats -->
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">Pass-Through</div>
+                            <small class="text-white-75">Taxation</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">15.3%</div>
+                            <small class="text-white-75">Self-Employment Tax</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">Schedule C</div>
+                            <small class="text-white-75">Single-Member</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-white bg-opacity-10 rounded-3 p-4 border border-white border-opacity-25">
+                    <i class="fas fa-calculator fa-4x text-white mb-3"></i>
+                    <h5 class="text-white mb-2">Understand Your Taxes</h5>
+                    <p class="text-white-75 mb-0">Navigate LLC taxation with confidence</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tax Basics -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="h3 fw-bold mb-4">LLC Taxation Basics</h2>
+                <p class="text-muted mb-4">LLCs are known for their flexible tax structure. By default, LLCs are taxed as pass-through entities, meaning profits and losses flow through to the owners' personal tax returns.</p>
+                
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-arrow-down text-primary me-2"></i>Pass-Through Taxation</h5>
+                                <p class="text-muted mb-0">LLC profits and losses are reported on members' personal tax returns, avoiding double taxation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-user text-success me-2"></i>Single-Member LLC</h5>
+                                <p class="text-muted mb-0">Taxed as a sole proprietorship using Schedule C on your personal tax return.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-users text-info me-2"></i>Multi-Member LLC</h5>
+                                <p class="text-muted mb-0">Taxed as a partnership using Form 1065 and Schedule K-1 for each member.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3"><i class="fas fa-building text-warning me-2"></i>Corporate Election</h5>
+                                <p class="text-muted mb-0">Can elect to be taxed as an S-Corp or C-Corp for potential tax benefits.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Key Tax Benefits</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>No double taxation</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Business deductions</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Flexible tax elections</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Pass-through losses</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Self-employment tax</li>
+                            <li class="mb-0"><i class="fas fa-check text-success me-2"></i>Quarterly payments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tax Filing Requirements -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Tax Filing Requirements</h2>
+                <p class="text-muted mb-0">Understanding your tax filing obligations is crucial for LLC compliance.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-user me-2"></i>Single-Member LLC</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">Federal Tax Filing:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>Schedule C (Form 1040)</li>
+                            <li>Schedule SE (Self-Employment Tax)</li>
+                            <li>Form 1040-ES (Estimated Tax)</li>
+                            <li>No separate business return</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">State Tax Filing:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>State income tax return</li>
+                            <li>State estimated tax payments</li>
+                            <li>Local business taxes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-users me-2"></i>Multi-Member LLC</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">Federal Tax Filing:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>Form 1065 (Partnership Return)</li>
+                            <li>Schedule K-1 for each member</li>
+                            <li>Form 1040-ES (Estimated Tax)</li>
+                            <li>Separate business return required</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">State Tax Filing:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>State partnership return</li>
+                            <li>State K-1 forms</li>
+                            <li>State estimated tax payments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Self-Employment Tax -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Self-Employment Tax</h2>
+                <p class="text-muted mb-0">LLC owners are subject to self-employment tax on their business income.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">Self-Employment Tax Breakdown:</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="bg-light rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">Social Security Tax:</h6>
+                                    <p class="mb-0 text-muted">12.4% on first $160,200 (2023)</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bg-light rounded-3 p-3">
+                                    <h6 class="fw-bold mb-2">Medicare Tax:</h6>
+                                    <p class="mb-0 text-muted">2.9% on all net earnings</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-warning bg-opacity-10 rounded-3 p-3 mt-3">
+                            <h6 class="fw-bold mb-2">💡 Tax Tip:</h6>
+                            <p class="mb-0">You can deduct half of your self-employment tax as a business expense on your personal tax return.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0"><i class="fas fa-calendar me-2"></i>Important Deadlines</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><strong>April 15:</strong> Personal tax return</li>
+                            <li class="mb-2"><strong>March 15:</strong> Partnership return</li>
+                            <li class="mb-2"><strong>Quarterly:</strong> Estimated tax payments</li>
+                            <li class="mb-0"><strong>January 31:</strong> W-2/1099 filing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tax Elections -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">LLC Tax Elections</h2>
+                <p class="text-muted mb-0">LLCs can elect different tax treatments for potential benefits.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">S-Corporation Election</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">Benefits:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>Potential self-employment tax savings</li>
+                            <li>Reasonable salary requirement</li>
+                            <li>Pass-through taxation</li>
+                            <li>Limited to 100 shareholders</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">Requirements:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>Form 2553 election</li>
+                            <li>U.S. shareholders only</li>
+                            <li>One class of stock</li>
+                            <li>Reasonable compensation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">C-Corporation Election</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">Benefits:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>No self-employment tax</li>
+                            <li>Retained earnings</li>
+                            <li>Fringe benefits</li>
+                            <li>Investor-friendly</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">Considerations:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>Double taxation</li>
+                            <li>Form 8832 election</li>
+                            <li>Corporate tax rates</li>
+                            <li>More complex compliance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">Default Taxation</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">Single-Member:</h6>
+                        <ul class="text-muted mb-3">
+                            <li>Sole proprietorship</li>
+                            <li>Schedule C filing</li>
+                            <li>Self-employment tax</li>
+                            <li>Simplest structure</li>
+                        </ul>
+                        
+                        <h6 class="fw-bold mb-3">Multi-Member:</h6>
+                        <ul class="text-muted mb-0">
+                            <li>Partnership taxation</li>
+                            <li>Form 1065 filing</li>
+                            <li>K-1 distributions</li>
+                            <li>Pass-through treatment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tools and Resources -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">Tax Tools and Resources</h2>
+                <p class="text-muted mb-0">Use our tools and resources to help with your LLC tax planning.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-calculator text-primary fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">LLC Cost Calculator</h5>
+                        </div>
+                        <p class="text-muted mb-3">Calculate the total cost of forming your LLC, including ongoing tax compliance costs.</p>
+                        <a href="{{ url_for('llc_cost_calculator') }}" class="btn btn-primary">Calculate Costs</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-question-circle text-success fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">Business Structure Quiz</h5>
+                        </div>
+                        <p class="text-muted mb-3">Determine if an LLC is the right structure for your tax situation and business goals.</p>
+                        <a href="{{ url_for('business_structure_quiz') }}" class="btn btn-success">Take Quiz</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="fas fa-clipboard-check text-info fa-lg"></i>
+                            </div>
+                            <h5 class="mb-0">Compliance Guide</h5>
+                        </div>
+                        <p class="text-muted mb-3">Learn about ongoing compliance requirements including tax filings and deadlines.</p>
+                        <a href="{{ url_for('llc_compliance_guide') }}" class="btn btn-info">View Guide</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- External Resources -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">External Tax Resources</h2>
+                <p class="text-muted mb-0">Additional resources to help with your LLC tax planning and filing.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">IRS Resources</h5>
+                        <ul class="text-muted mb-3">
+                            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/limited-liability-company-llc" target="_blank" class="text-decoration-none">IRS LLC Information</a></li>
+                            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center" target="_blank" class="text-decoration-none">Self-Employed Tax Center</a></li>
+                            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes" target="_blank" class="text-decoration-none">Estimated Tax Information</a></li>
+                        </ul>
+                        <div class="bg-primary bg-opacity-10 rounded-3 p-3">
+                            <small class="text-muted">Official IRS guidance for LLC taxation and filing requirements.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">Tax Software</h5>
+                        <ul class="text-muted mb-3">
+                            <li><a href="https://turbotax.intuit.com/small-business/" target="_blank" class="text-decoration-none">TurboTax Business</a></li>
+                            <li><a href="https://www.hrblock.com/business/" target="_blank" class="text-decoration-none">H&R Block Business</a></li>
+                            <li><a href="https://www.taxact.com/business-taxes" target="_blank" class="text-decoration-none">TaxAct Business</a></li>
+                        </ul>
+                        <div class="bg-success bg-opacity-10 rounded-3 p-3">
+                            <small class="text-muted">Professional tax software for business filing and planning.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">Professional Services</h5>
+                        <ul class="text-muted mb-3">
+                            <li><a href="https://www.aicpa.org/" target="_blank" class="text-decoration-none">Find a CPA</a></li>
+                            <li><a href="https://www.nacva.com/" target="_blank" class="text-decoration-none">Business Valuators</a></li>
+                            <li><a href="https://www.irs.gov/tax-professionals" target="_blank" class="text-decoration-none">IRS Tax Professionals</a></li>
+                        </ul>
+                        <div class="bg-warning bg-opacity-10 rounded-3 p-3">
+                            <small class="text-muted">Consider professional help for complex tax situations.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h3 class="fw-bold mb-3">Need Help with LLC Taxes?</h3>
+                <p class="mb-0">Use our tools and resources to understand your tax obligations and plan for your LLC's financial success.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{{ url_for('llc_cost_calculator') }}" class="btn btn-light btn-lg me-2">Calculate Costs</a>
+                <a href="{{ url_for('llc_compliance_guide') }}" class="btn btn-outline-light btn-lg">Compliance Guide</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Disclaimer -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info mb-0">
+                    <h6 class="fw-bold mb-2">📋 Important Disclaimer:</h6>
+                    <p class="mb-0">This guide provides general information about LLC taxation. Tax laws are complex and change frequently. We strongly recommend consulting with a qualified tax professional or CPA for specific tax advice related to your situation. This information is for educational purposes only and should not be considered tax advice.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

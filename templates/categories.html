@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Categories Header -->
+<section class="bg-primary text-white py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-4 fw-bold mb-4">Business Categories</h1>
+                <p class="lead mb-4">Browse businesses by industry and find exactly what you're looking for</p>
+                
+                <!-- Search Form -->
+                <form action="/search" method="GET" class="bg-white p-3 rounded">
+                    <div class="row g-2">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="q" placeholder="Search for a specific category or business type...">
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-search me-2"></i>Search Categories
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Categories -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Popular Categories</h2>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-utensils fa-4x text-primary mb-3"></i>
+                        <h4>Restaurants</h4>
+                        <p class="text-muted mb-3">Find the best places to eat in your area</p>
+                        <a href="/search?category=restaurant" class="btn btn-primary">Browse Restaurants</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-tools fa-4x text-primary mb-3"></i>
+                        <h4>Services</h4>
+                        <p class="text-muted mb-3">Professional and personal services</p>
+                        <a href="/search?category=service" class="btn btn-primary">Browse Services</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-shopping-bag fa-4x text-primary mb-3"></i>
+                        <h4>Retail</h4>
+                        <p class="text-muted mb-3">Shopping and retail businesses</p>
+                        <a href="/search?category=retail" class="btn btn-primary">Browse Retail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-plus-square fa-4x text-primary mb-3"></i>
+                        <h4>Healthcare</h4>
+                        <p class="text-muted mb-3">Medical and health services</p>
+                        <a href="/search?category=healthcare" class="btn btn-primary">Browse Healthcare</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-car fa-4x text-primary mb-3"></i>
+                        <h4>Automotive</h4>
+                        <p class="text-muted mb-3">Car services and dealerships</p>
+                        <a href="/search?category=automotive" class="btn btn-primary">Browse Automotive</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-briefcase fa-4x text-primary mb-3"></i>
+                        <h4>Professional</h4>
+                        <p class="text-muted mb-3">Legal, accounting, and consulting</p>
+                        <a href="/search?category=professional" class="btn btn-primary">Browse Professional</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-home fa-4x text-primary mb-3"></i>
+                        <h4>Real Estate</h4>
+                        <p class="text-muted mb-3">Real estate and property services</p>
+                        <a href="/search?category=real-estate" class="btn btn-primary">Browse Real Estate</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-graduation-cap fa-4x text-primary mb-3"></i>
+                        <h4>Education</h4>
+                        <p class="text-muted mb-3">Schools and educational services</p>
+                        <a href="/search?category=education" class="btn btn-primary">Browse Education</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- All Categories List -->
+{% if categories %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">All Business Categories</h2>
+        <div class="row">
+            {% for category in categories %}
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="card-title mb-1">{{ category.name }}</h5>
+                                <p class="text-muted mb-0">{{ category.count }} businesses</p>
+                            </div>
+                            <a href="/search?category={{ category.name.lower() }}" class="btn btn-outline-primary btn-sm">
+                                Browse
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Category Statistics -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Directory Statistics</h2>
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-tags fa-3x text-primary mb-3"></i>
+                        <h3 class="text-primary">{{ categories|length }}</h3>
+                        <p class="mb-0">Business Categories</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-building fa-3x text-primary mb-3"></i>
+                        <h3 class="text-primary">10,000+</h3>
+                        <p class="mb-0">Total Businesses</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
+                        <h3 class="text-primary">50</h3>
+                        <p class="mb-0">States Covered</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                        <h3 class="text-primary">1M+</h3>
+                        <p class="mb-0">Monthly Visitors</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How to Use Categories -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">How to Use Our Categories</h2>
+        <div class="row">
+            <div class="col-lg-4 text-center mb-4">
+                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <i class="fas fa-search fa-2x"></i>
+                </div>
+                <h4>Browse Categories</h4>
+                <p class="text-muted">Explore our comprehensive list of business categories to find what you need</p>
+            </div>
+            <div class="col-lg-4 text-center mb-4">
+                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <i class="fas fa-filter fa-2x"></i>
+                </div>
+                <h4>Filter Results</h4>
+                <p class="text-muted">Use category filters to narrow down your search and find specific businesses</p>
+            </div>
+            <div class="col-lg-4 text-center mb-4">
+                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <i class="fas fa-star fa-2x"></i>
+                </div>
+                <h4>Read Reviews</h4>
+                <p class="text-muted">Check ratings and reviews to make informed decisions about businesses</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+

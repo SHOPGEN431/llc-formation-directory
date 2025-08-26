@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}Find local businesses, restaurants, and services with reviews and contact information. Browse by city, state, or category.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}business directory, local businesses, restaurants, services, reviews, find businesses{% endblock %}">
+    <meta name="author" content="llcdirectory.org">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.url }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:title" content="{% block og_title %}{{ title }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ meta_description }}{% endblock %}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/og-image.jpg') }}">
+    <meta property="og:site_name" content="llcdirectory.org">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.url }}">
+    <meta property="twitter:title" content="{% block twitter_title %}{{ title }}{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}{{ meta_description }}{% endblock %}">
+    <meta property="twitter:image" content="{{ url_for('static', filename='images/og-image.jpg') }}">
+    
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    
+    <!-- Structured Data -->
+    {% if structured_data %}
+    <script type="application/ld+json">
+        {{ structured_data | safe }}
+    </script>
+    {% endif %}
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+    <meta name="theme-color" content="#007bff">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="{{ url_for('static', filename='css/style.css') }}" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" as="style">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="{{ url_for('index') }}">
+                <i class="fas fa-shield-alt me-2"></i>
+                llcdirectory.org
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Cities
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for city in top_cities[:20] %}
+                            <li><a class="dropdown-item" href="/city/{{ city.state_slug }}/{{ city.city_slug }}">
+                                {{ city.city }}, {{ city.state }} ({{ city.count }})
+                            </a></li>
+                            {% endfor %}
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ url_for('cities_directory') }}">View All Top 50 Cities</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('all_locations') }}">View All Cities</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            States
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for state_slug, state_info in states_data.items() %}
+                            <li><a class="dropdown-item" href="/state/{{ state_slug }}">
+                                {{ state_info.name }} ({{ state_info.abbr }})
+                            </a></li>
+                            {% endfor %}
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ url_for('all_locations') }}">View All States</a></li>
+                        </ul>
+                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Resources
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('resources') }}">All Resources</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ url_for('calculators') }}">Business Calculators</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('business_structure_quiz') }}">Business Structure Quiz</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('llc_cost_calculator') }}">LLC Formation Cost Calculator</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('foreign_qualification_checklist') }}">Foreign Qualification Checklist</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        LLC Guides
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('llc_formation_guide') }}">LLC Formation Guide</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('llc_operating_agreement_guide') }}">Operating Agreement Guide</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('llc_tax_guide') }}">LLC Tax Guide</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('llc_compliance_guide') }}">LLC Compliance Guide</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('llc_business_bank_account_guide') }}">Business Bank Account Guide</a></li>
+                    </ul>
+                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main style="margin-top: 76px;">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">llcdirectory.org</h5>
+                    <p class="text-light">Your comprehensive resource for LLC formation services, guides, and tools. Find local providers, access expert guides, and use interactive tools to make informed business decisions.</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{{ url_for('index') }}" class="text-light text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="{{ url_for('about') }}" class="text-light text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="{{ url_for('contact') }}" class="text-light text-decoration-none">Contact Us</a></li>
+                        <li class="mb-2"><a href="{{ url_for('resources') }}" class="text-light text-decoration-none">Resources</a></li>
+                        <li class="mb-2"><a href="{{ url_for('privacy_policy') }}" class="text-light text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="{{ url_for('terms_conditions') }}" class="text-light text-decoration-none">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="mb-3">Business Tools</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{{ url_for('llc_cost_calculator') }}" class="text-light text-decoration-none">LLC Cost Calculator</a></li>
+                        <li class="mb-2"><a href="{{ url_for('business_structure_quiz') }}" class="text-light text-decoration-none">Business Structure Quiz</a></li>
+                        <li class="mb-2"><a href="{{ url_for('foreign_qualification_checklist') }}" class="text-light text-decoration-none">Foreign Qualification</a></li>
+                        <li class="mb-2"><a href="{{ url_for('break_even_calculator') }}" class="text-light text-decoration-none">Break-Even Calculator</a></li>
+                        <li class="mb-2"><a href="{{ url_for('roi_calculator') }}" class="text-light text-decoration-none">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Locations</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{{ url_for('cities_directory') }}" class="text-light text-decoration-none">Browse Cities</a></li>
+                        <li class="mb-2"><a href="{{ url_for('all_locations') }}" class="text-light text-decoration-none">All Locations</a></li>
+                        <li class="mb-2"><a href="/state/california" class="text-light text-decoration-none">California</a></li>
+                        <li class="mb-2"><a href="/state/texas" class="text-light text-decoration-none">Texas</a></li>
+                        <li class="mb-2"><a href="/state/florida" class="text-light text-decoration-none">Florida</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-light">&copy; 2025 llcdirectory.org. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-light">Made with <i class="fas fa-heart text-danger"></i> for entrepreneurs</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Northwest Registered Agent Button -->
+    <div class="sticky-northwest-button" id="stickyNorthwestButton">
+        <div class="sticky-button-container">
+            <div class="sticky-button-content">
+                <div class="sticky-button-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="sticky-button-text">
+                    <div class="sticky-button-title">Start Your LLC Today</div>
+                    <div class="sticky-button-subtitle">$39 + State Fees</div>
+                    <div class="sticky-button-social-proof">
+                        <i class="fas fa-users me-1"></i>
+                        <span id="peopleCount">32</span> people chose it today
+                    </div>
+                </div>
+            </div>
+                            <a href="https://consumer-champion.org/LLCwebsite" target="_blank" rel="sponsored nofollow" class="sticky-button-cta">
+                    Get Started
+                </a>
+        </div>
+    </div>
+
+    <style>
+    .sticky-northwest-button {
+        position: fixed;
+        bottom: -100px; /* Start hidden below viewport */
+        right: 20px;
+        z-index: 1000;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        border: 2px solid #e9ecef;
+        transition: all 0.5s ease;
+        max-width: 400px;
+        min-width: 380px;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .sticky-northwest-button.show {
+        bottom: 20px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .sticky-northwest-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        border-color: #007bff;
+    }
+
+    .sticky-button-container {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        gap: 16px;
+    }
+
+    .sticky-button-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 1;
+    }
+
+    .sticky-button-icon {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        background: #007bff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 20px;
+    }
+
+    .sticky-button-text {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .sticky-button-title {
+        color: #212529;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.2;
+        margin-bottom: 3px;
+    }
+
+    .sticky-button-subtitle {
+        color: #6c757d;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 3px;
+    }
+
+    .sticky-button-social-proof {
+        color: #28a745;
+        font-size: 12px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+
+    .sticky-button-social-proof i {
+        font-size: 8px;
+    }
+
+    .sticky-button-cta {
+        background: #007bff;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .sticky-button-cta:hover {
+        background: #0056b3;
+        color: #ffffff;
+        transform: scale(1.05);
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+        .sticky-northwest-button {
+            right: 15px;
+            left: 15px;
+            max-width: none;
+            border-radius: 18px;
+        }
+        
+        .sticky-northwest-button.show {
+            bottom: 15px;
+        }
+        
+        .sticky-button-container {
+            padding: 16px 20px;
+            gap: 16px;
+        }
+        
+        .sticky-button-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        .sticky-button-subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            color: #007bff;
+        }
+        
+        .sticky-button-social-proof {
+            font-size: 12px;
+            margin-top: 3px;
+        }
+        
+        .sticky-button-cta {
+            padding: 12px 22px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0, 123, 255, 0.3);
+        }
+        
+        .sticky-button-icon {
+            width: 48px !important;
+            height: 48px !important;
+            font-size: 20px !important;
+        }
+    }
+
+    /* Small mobile adjustments */
+    @media (max-width: 480px) {
+        .sticky-northwest-button {
+            right: 10px;
+            left: 10px;
+            border-radius: 16px;
+        }
+        
+        .sticky-northwest-button.show {
+            bottom: 10px;
+        }
+        
+        .sticky-button-container {
+            padding: 14px 16px;
+            gap: 12px;
+        }
+        
+        .sticky-button-title {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        
+        .sticky-button-subtitle {
+            font-size: 13px;
+            font-weight: 600;
+            color: #007bff;
+        }
+        
+        .sticky-button-social-proof {
+            font-size: 11px;
+            margin-top: 2px;
+        }
+        
+        .sticky-button-cta {
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 10px;
+        }
+        
+        .sticky-button-logo img {
+            width: 44px !important;
+            height: 44px !important;
+        }
+    }
+    </style>
+
+    <script>
+    // Sticky Northwest Button Scroll Logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const stickyButton = document.getElementById('stickyNorthwestButton');
+        const peopleCountElement = document.getElementById('peopleCount');
+        let scrollThreshold = 300; // Show button after scrolling 300px
+        
+        // Generate random number between 25-50 for social proof
+        function generateRandomCount() {
+            return Math.floor(Math.random() * (50 - 25 + 1)) + 25;
+        }
+        
+        // Update people count with random number
+        function updatePeopleCount() {
+            const randomCount = generateRandomCount();
+            peopleCountElement.textContent = randomCount;
+        }
+        
+        function handleScroll() {
+            if (window.scrollY > scrollThreshold) {
+                stickyButton.classList.add('show');
+            } else {
+                stickyButton.classList.remove('show');
+            }
+        }
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', handleScroll);
+        
+        // Initial check in case page is loaded scrolled down
+        handleScroll();
+        
+        // Set initial random count
+        updatePeopleCount();
+        
+        // Update count every 30 seconds for dynamic feel
+        setInterval(updatePeopleCount, 30000);
+    });
+    </script>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>

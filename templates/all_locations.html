@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-3">
+                        <li class="breadcrumb-item"><a href="/" class="text-white-50">Home</a></li>
+                        <li class="breadcrumb-item active text-white">All Locations</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4 fw-bold mb-3">Complete Directory of All Cities & States</h1>
+                <p class="lead mb-4">Browse our comprehensive directory of all cities and states with LLC formation services. Find local business formation providers in every location across the United States.</p>
+                
+                <!-- Stats -->
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">{{ cities|length }}</div>
+                            <small class="text-white-75">Cities</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">{{ states|length }}</div>
+                            <small class="text-white-75">States</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bg-white bg-opacity-10 rounded-3 p-3 text-center">
+                            <div class="h4 fw-bold text-white mb-1">{{ cities|map(attribute='count')|sum }}</div>
+                            <small class="text-white-75">Total Services</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-white bg-opacity-10 rounded-3 p-4 border border-white border-opacity-25">
+                    <i class="fas fa-map-marked-alt fa-4x text-white mb-3"></i>
+                    <h5 class="text-white mb-2">Complete Coverage</h5>
+                    <p class="text-white-75 mb-0">Every city and state with LLC services</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Navigation -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-city text-primary me-3 fa-2x"></i>
+                    <div>
+                        <h5 class="mb-1">Browse by City</h5>
+                        <small class="text-muted">Find LLC formation services in specific cities</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-map text-success me-3 fa-2x"></i>
+                    <div>
+                        <h5 class="mb-1">Browse by State</h5>
+                        <small class="text-muted">View all cities within each state</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- All States Directory -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">All States</h2>
+                <p class="text-muted mb-0">Complete list of all states with LLC formation services.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for state in states %}
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                <a href="/state/{{ state.state_slug }}" class="text-decoration-none text-dark">
+                    {{ state.state_name }} ({{ state.state }}) - {{ state.count }} Services
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- All Cities Directory -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="h3 fw-bold mb-3">All Cities</h2>
+                <p class="text-muted mb-0">Complete list of all cities with LLC formation services.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for city in cities %}
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                <a href="/city/{{ city.state_slug }}/{{ city.city_slug }}" class="text-decoration-none text-dark">
+                    {{ city.city }}, {{ city.state }} - {{ city.count }} Services
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/cities" class="btn btn-primary btn-lg me-3">
+                <i class="fas fa-star me-2"></i>Top Cities
+            </a>
+            <a href="/resources" class="btn btn-outline-primary btn-lg">
+                <i class="fas fa-calculator me-2"></i>Business Tools
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Call to Action -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center">
+            <div class="bg-primary rounded-3 p-5 text-white">
+                <h3 class="fw-bold mb-3">Can't Find Your Location?</h3>
+                <p class="mb-4">We're constantly expanding our directory. If you don't see your city or state listed, contact us to request coverage for your area.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="/cities" class="btn btn-light btn-lg">Top Cities</a>
+                    <a href="/resources" class="btn btn-outline-light btn-lg">Business Tools</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEO Content -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="h4 fw-bold mb-4">Complete Coverage Across the United States</h2>
+                <p class="text-muted mb-4">Our comprehensive directory covers all major cities and states across the United States, ensuring you can find local LLC formation services no matter where you're located.</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-coverage text-primary"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Nationwide Coverage</h6>
+                                <p class="text-muted mb-0">LLC formation services in all 50 states and major cities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-search text-success"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Easy Navigation</h6>
+                                <p class="text-muted mb-0">Browse by state or city to find services in your area.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-verified text-info"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Verified Providers</h6>
+                                <p class="text-muted mb-0">All listed providers are verified and licensed in their respective states.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <i class="fas fa-update text-warning"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Regular Updates</h6>
+                                <p class="text-muted mb-0">Our directory is constantly updated with new providers and locations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+

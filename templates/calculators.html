@@ -1,0 +1,353 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-3">
+                        <li class="breadcrumb-item"><a href="/" class="text-white-50">Home</a></li>
+                        <li class="breadcrumb-item active text-white">Calculators</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4 fw-bold mb-3">Free Business Calculators</h1>
+                <p class="lead mb-4">Essential tools for LLC formation and business planning. Calculate break-even points, ROI, and equity splits to make informed decisions for your business.</p>
+                
+                <div class="d-flex gap-3">
+                    <a href="/calculator/break-even" class="btn btn-light btn-lg">
+                        <i class="fas fa-calculator me-2"></i>Break-Even Calculator
+                    </a>
+                    <a href="/calculator/business-loan" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-money-bill-wave me-2"></i>Business Loan Calculator
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-white bg-opacity-10 rounded-3 p-4 border border-white border-opacity-25">
+                    <i class="fas fa-calculator fa-4x text-white mb-3"></i>
+                    <h4 class="text-white mb-2">4 Free Tools</h4>
+                    <p class="mb-0 text-white-75">Professional business calculators</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Calculators Grid -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Break-Even Calculator -->
+            <div class="col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-shadow transition-all">
+                    <div class="card-body p-4 text-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px;">
+                            <i class="fas fa-calculator fa-2x text-primary"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Break-Even Calculator</h4>
+                        <p class="text-muted mb-4">Determine when your business will start making a profit by calculating your break-even point based on fixed costs, variable costs, and selling price.</p>
+                        
+                        <div class="row text-center mb-4">
+                            <div class="col-4">
+                                <div class="text-primary fw-bold">Fixed Costs</div>
+                                <small class="text-muted">Rent, salaries</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-primary fw-bold">Variable Costs</div>
+                                <small class="text-muted">Materials, labor</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-primary fw-bold">Selling Price</div>
+                                <small class="text-muted">Per unit</small>
+                            </div>
+                        </div>
+                        
+                        <a href="/calculator/break-even" class="btn btn-primary w-100">
+                            <i class="fas fa-calculator me-2"></i>Calculate Break-Even
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ROI Calculator -->
+            <div class="col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-shadow transition-all">
+                    <div class="card-body p-4 text-center">
+                        <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px;">
+                            <i class="fas fa-chart-line fa-2x text-success"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">ROI Calculator</h4>
+                        <p class="text-muted mb-4">Calculate your return on investment to evaluate the profitability of your business investments and compare different opportunities.</p>
+                        
+                        <div class="row text-center mb-4">
+                            <div class="col-4">
+                                <div class="text-success fw-bold">Initial Investment</div>
+                                <small class="text-muted">Total cost</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-success fw-bold">Returns</div>
+                                <small class="text-muted">Profit earned</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-success fw-bold">ROI %</div>
+                                <small class="text-muted">Percentage</small>
+                            </div>
+                        </div>
+                        
+                        <a href="/calculator/roi" class="btn btn-success w-100">
+                            <i class="fas fa-chart-line me-2"></i>Calculate ROI
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Equity Split Calculator -->
+            <div class="col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-shadow transition-all">
+                    <div class="card-body p-4 text-center">
+                        <div class="bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px;">
+                            <i class="fas fa-users fa-2x text-warning"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Equity Split Calculator</h4>
+                        <p class="text-muted mb-4">Determine fair ownership percentages for multi-member LLCs based on contributions, time, and responsibilities of each member.</p>
+                        
+                        <div class="row text-center mb-4">
+                            <div class="col-4">
+                                <div class="text-warning fw-bold">Capital</div>
+                                <small class="text-muted">Money invested</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-warning fw-bold">Time</div>
+                                <small class="text-muted">Hours worked</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-warning fw-bold">Skills</div>
+                                <small class="text-muted">Expertise</small>
+                            </div>
+                        </div>
+                        
+                        <a href="/calculator/equity-split" class="btn btn-warning w-100">
+                            <i class="fas fa-users me-2"></i>Calculate Equity Split
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Business Loan Calculator -->
+            <div class="col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-shadow transition-all">
+                    <div class="card-body p-4 text-center">
+                        <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px;">
+                            <i class="fas fa-money-bill-wave fa-2x text-info"></i>
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Business Loan Calculator</h4>
+                        <p class="text-muted mb-4">Calculate loan payments, interest costs, and amortization schedules. Compare different financing options for your business.</p>
+                        
+                        <div class="row text-center mb-4">
+                            <div class="col-4">
+                                <div class="text-info fw-bold">Payment</div>
+                                <small class="text-muted">Monthly amount</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-info fw-bold">Interest</div>
+                                <small class="text-muted">Total cost</small>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-info fw-bold">APR</div>
+                                <small class="text-muted">Annual rate</small>
+                            </div>
+                        </div>
+                        
+                        <a href="/calculator/business-loan" class="btn btn-info w-100">
+                            <i class="fas fa-money-bill-wave me-2"></i>Calculate Loan
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Use Our Calculators -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h3 fw-bold mb-3">Why Use Our Business Calculators?</h2>
+            <p class="text-muted mb-0">Professional tools designed specifically for LLC formation and business planning</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-lock fa-2x text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">100% Free</h5>
+                    <p class="text-muted mb-0">No hidden fees or subscriptions required</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-shield-alt fa-2x text-success"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Secure & Private</h5>
+                    <p class="text-muted mb-0">Your data stays on your device</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-mobile-alt fa-2x text-info"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Mobile Friendly</h5>
+                    <p class="text-muted mb-0">Works perfectly on all devices</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-download fa-2x text-warning"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Export Results</h5>
+                    <p class="text-muted mb-0">Save and share your calculations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Top 25 Cities and States Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">
+            <i class="fas fa-map-marker-alt text-primary me-2"></i>Top 25 Cities & States for LLC Formation
+        </h2>
+        <p class="lead text-center mb-5">Discover the most popular locations for LLC formation based on population and business activity.</p>
+        
+        <div class="row">
+            <!-- Top States -->
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-flag me-2"></i>Top 25 States by Population
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ol class="list-unstyled">
+                                    <li class="mb-2"><strong>1.</strong> <a href="/state/california" class="text-decoration-none">California</a> <span class="text-muted">(39.5M)</span></li>
+                                    <li class="mb-2"><strong>2.</strong> <a href="/state/texas" class="text-decoration-none">Texas</a> <span class="text-muted">(29.1M)</span></li>
+                                    <li class="mb-2"><strong>3.</strong> <a href="/state/florida" class="text-decoration-none">Florida</a> <span class="text-muted">(21.5M)</span></li>
+                                    <li class="mb-2"><strong>4.</strong> <a href="/state/new-york" class="text-decoration-none">New York</a> <span class="text-muted">(20.2M)</span></li>
+                                    <li class="mb-2"><strong>5.</strong> <a href="/state/pennsylvania" class="text-decoration-none">Pennsylvania</a> <span class="text-muted">(13.0M)</span></li>
+                                    <li class="mb-2"><strong>6.</strong> <a href="/state/illinois" class="text-decoration-none">Illinois</a> <span class="text-muted">(12.8M)</span></li>
+                                    <li class="mb-2"><strong>7.</strong> <a href="/state/ohio" class="text-decoration-none">Ohio</a> <span class="text-muted">(11.8M)</span></li>
+                                    <li class="mb-2"><strong>8.</strong> <a href="/state/georgia" class="text-decoration-none">Georgia</a> <span class="text-muted">(10.6M)</span></li>
+                                    <li class="mb-2"><strong>9.</strong> <a href="/state/north-carolina" class="text-decoration-none">North Carolina</a> <span class="text-muted">(10.4M)</span></li>
+                                    <li class="mb-2"><strong>10.</strong> <a href="/state/michigan" class="text-decoration-none">Michigan</a> <span class="text-muted">(10.0M)</span></li>
+                                    <li class="mb-2"><strong>11.</strong> <a href="/state/new-jersey" class="text-decoration-none">New Jersey</a> <span class="text-muted">(9.3M)</span></li>
+                                    <li class="mb-2"><strong>12.</strong> <a href="/state/virginia" class="text-decoration-none">Virginia</a> <span class="text-muted">(8.6M)</span></li>
+                                    <li class="mb-2"><strong>13.</strong> <a href="/state/washington" class="text-decoration-none">Washington</a> <span class="text-muted">(7.6M)</span></li>
+                                </ol>
+                            </div>
+                            <div class="col-md-6">
+                                <ol class="list-unstyled" start="14">
+                                    <li class="mb-2"><strong>14.</strong> <a href="/state/arizona" class="text-decoration-none">Arizona</a> <span class="text-muted">(7.2M)</span></li>
+                                    <li class="mb-2"><strong>15.</strong> <a href="/state/massachusetts" class="text-decoration-none">Massachusetts</a> <span class="text-muted">(7.0M)</span></li>
+                                    <li class="mb-2"><strong>16.</strong> <a href="/state/tennessee" class="text-decoration-none">Tennessee</a> <span class="text-muted">(6.9M)</span></li>
+                                    <li class="mb-2"><strong>17.</strong> <a href="/state/indiana" class="text-decoration-none">Indiana</a> <span class="text-muted">(6.8M)</span></li>
+                                    <li class="mb-2"><strong>18.</strong> <a href="/state/missouri" class="text-decoration-none">Missouri</a> <span class="text-muted">(6.1M)</span></li>
+                                    <li class="mb-2"><strong>19.</strong> <a href="/state/maryland" class="text-decoration-none">Maryland</a> <span class="text-muted">(6.0M)</span></li>
+                                    <li class="mb-2"><strong>20.</strong> <a href="/state/colorado" class="text-decoration-none">Colorado</a> <span class="text-muted">(5.8M)</span></li>
+                                    <li class="mb-2"><strong>21.</strong> <a href="/state/wisconsin" class="text-decoration-none">Wisconsin</a> <span class="text-muted">(5.8M)</span></li>
+                                    <li class="mb-2"><strong>22.</strong> <a href="/state/minnesota" class="text-decoration-none">Minnesota</a> <span class="text-muted">(5.7M)</span></li>
+                                    <li class="mb-2"><strong>23.</strong> <a href="/state/south-carolina" class="text-decoration-none">South Carolina</a> <span class="text-muted">(5.1M)</span></li>
+                                    <li class="mb-2"><strong>24.</strong> <a href="/state/alabama" class="text-decoration-none">Alabama</a> <span class="text-muted">(5.0M)</span></li>
+                                    <li class="mb-2"><strong>25.</strong> <a href="/state/louisiana" class="text-decoration-none">Louisiana</a> <span class="text-muted">(4.6M)</span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Top Cities -->
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-city me-2"></i>Top 25 Cities by Population
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ol class="list-unstyled">
+                                    <li class="mb-2"><strong>1.</strong> <a href="/city/new-york/new-york" class="text-decoration-none">New York, NY</a> <span class="text-muted">(8.8M)</span></li>
+                                    <li class="mb-2"><strong>2.</strong> <a href="/city/california/los-angeles" class="text-decoration-none">Los Angeles, CA</a> <span class="text-muted">(4.0M)</span></li>
+                                    <li class="mb-2"><strong>3.</strong> <a href="/city/illinois/chicago" class="text-decoration-none">Chicago, IL</a> <span class="text-muted">(2.7M)</span></li>
+                                    <li class="mb-2"><strong>4.</strong> <a href="/city/texas/houston" class="text-decoration-none">Houston, TX</a> <span class="text-muted">(2.3M)</span></li>
+                                    <li class="mb-2"><strong>5.</strong> <a href="/city/arizona/phoenix" class="text-decoration-none">Phoenix, AZ</a> <span class="text-muted">(1.6M)</span></li>
+                                    <li class="mb-2"><strong>6.</strong> <a href="/city/pennsylvania/philadelphia" class="text-decoration-none">Philadelphia, PA</a> <span class="text-muted">(1.6M)</span></li>
+                                    <li class="mb-2"><strong>7.</strong> <a href="/city/texas/san-antonio" class="text-decoration-none">San Antonio, TX</a> <span class="text-muted">(1.5M)</span></li>
+                                    <li class="mb-2"><strong>8.</strong> <a href="/city/california/san-diego" class="text-decoration-none">San Diego, CA</a> <span class="text-muted">(1.4M)</span></li>
+                                    <li class="mb-2"><strong>9.</strong> <a href="/city/texas/dallas" class="text-decoration-none">Dallas, TX</a> <span class="text-muted">(1.3M)</span></li>
+                                    <li class="mb-2"><strong>10.</strong> <a href="/city/california/san-jose" class="text-decoration-none">San Jose, CA</a> <span class="text-muted">(1.0M)</span></li>
+                                    <li class="mb-2"><strong>11.</strong> <a href="/city/texas/austin" class="text-decoration-none">Austin, TX</a> <span class="text-muted">(978K)</span></li>
+                                    <li class="mb-2"><strong>12.</strong> <a href="/city/florida/jacksonville" class="text-decoration-none">Jacksonville, FL</a> <span class="text-muted">(949K)</span></li>
+                                    <li class="mb-2"><strong>13.</strong> <a href="/city/california/san-francisco" class="text-decoration-none">San Francisco, CA</a> <span class="text-muted">(873K)</span></li>
+                                </ol>
+                            </div>
+                            <div class="col-md-6">
+                                <ol class="list-unstyled" start="14">
+                                    <li class="mb-2"><strong>14.</strong> <a href="/city/ohio/columbus" class="text-decoration-none">Columbus, OH</a> <span class="text-muted">(898K)</span></li>
+                                    <li class="mb-2"><strong>15.</strong> <a href="/city/north-carolina/charlotte" class="text-decoration-none">Charlotte, NC</a> <span class="text-muted">(885K)</span></li>
+                                    <li class="mb-2"><strong>16.</strong> <a href="/city/texas/fort-worth" class="text-decoration-none">Fort Worth, TX</a> <span class="text-muted">(895K)</span></li>
+                                    <li class="mb-2"><strong>17.</strong> <a href="/city/indiana/indianapolis" class="text-decoration-none">Indianapolis, IN</a> <span class="text-muted">(887K)</span></li>
+                                    <li class="mb-2"><strong>18.</strong> <a href="/city/washington/seattle" class="text-decoration-none">Seattle, WA</a> <span class="text-muted">(744K)</span></li>
+                                    <li class="mb-2"><strong>19.</strong> <a href="/city/colorado/denver" class="text-decoration-none">Denver, CO</a> <span class="text-muted">(727K)</span></li>
+                                    <li class="mb-2"><strong>20.</strong> <a href="/city/washington/washington" class="text-decoration-none">Washington, DC</a> <span class="text-muted">(689K)</span></li>
+                                    <li class="mb-2"><strong>21.</strong> <a href="/city/tennessee/nashville" class="text-decoration-none">Nashville, TN</a> <span class="text-muted">(689K)</span></li>
+                                    <li class="mb-2"><strong>22.</strong> <a href="/city/oklahoma/oklahoma-city" class="text-decoration-none">Oklahoma City, OK</a> <span class="text-muted">(681K)</span></li>
+                                    <li class="mb-2"><strong>23.</strong> <a href="/city/nevada/las-vegas" class="text-decoration-none">Las Vegas, NV</a> <span class="text-muted">(651K)</span></li>
+                                    <li class="mb-2"><strong>24.</strong> <a href="/city/oregon/portland" class="text-decoration-none">Portland, OR</a> <span class="text-muted">(652K)</span></li>
+                                    <li class="mb-2"><strong>25.</strong> <a href="/city/kentucky/louisville" class="text-decoration-none">Louisville, KY</a> <span class="text-muted">(633K)</span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/all-locations" class="btn btn-primary btn-lg">
+                <i class="fas fa-search me-2"></i>Browse All Locations
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center">
+            <h3 class="fw-bold mb-4">Ready to Start Your LLC?</h3>
+            <p class="lead mb-4">Use our calculators to plan your business, then find the perfect LLC formation service for your needs.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="/cities" class="btn btn-primary btn-lg">
+                    <i class="fas fa-city me-2"></i>Find Local Services
+                </a>
+                <a href="/all-locations" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-map me-2"></i>Browse All Locations
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

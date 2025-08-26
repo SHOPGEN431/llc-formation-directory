@@ -1,0 +1,636 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="fas fa-question-circle me-3"></i>Business Structure Quiz
+                </h1>
+                <p class="lead mb-4">Take our comprehensive quiz to determine whether an LLC, S-Corp, or C-Corp is right for your business goals and circumstances.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-clock me-2"></i>
+                        <span>5-10 minutes</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-list me-2"></i>
+                        <span>8 questions</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-chart-bar me-2"></i>
+                        <span>Personalized results</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-white bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 120px; height: 120px;">
+                    <i class="fas fa-clipboard-check fa-4x"></i>
+                </div>
+                <h4>Expert Guidance</h4>
+                <p class="mb-0">Get personalized recommendations</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quiz Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Quiz Form -->
+                <div id="quiz-form" class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="text-center mb-4">Answer these 8 questions to get your personalized business structure recommendation</h3>
+                        
+                        <form id="businessQuiz">
+                            <!-- Question 1 -->
+                            <div class="mb-4">
+                                <h5 class="mb-3">1. How many owners will your business have?</h5>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1a" value="A" required>
+                                    <label class="form-check-label" for="q1a">Just me (solo founder)</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1b" value="B">
+                                    <label class="form-check-label" for="q1b">2-5 partners</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1c" value="C">
+                                    <label class="form-check-label" for="q1c">More than 5 owners or plan to have many investors</label>
+                                </div>
+                            </div>
+
+                            <!-- Question 2 -->
+                            <div class="mb-4">
+                                <h5 class="mb-3">2. What's your primary goal for business profits?</h5>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2a" value="A" required>
+                                    <label class="form-check-label" for="q2a">Keep it simple with pass-through taxation</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2b" value="B">
+                                    <label class="form-check-label" for="q2b">Minimize self-employment taxes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2c" value="C">
+                                    <label class="form-check-label" for="q2c">Reinvest profits back into the company</label>
+                                </div>
+                            </div>
+
+                            <!-- Question 3 -->
+                            <div class="mb-4">
+                                <h5 class="mb-3">3. Do you plan to raise outside funding?</h5>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3a" value="A" required>
+                                    <label class="form-check-label" for="q3a">No, just a small business or side hustle</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3b" value="B">
+                                    <label class="form-check-label" for="q3b">Maybe small business loans or family investment</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3c" value="C">
+                                    <label class="form-check-label" for="q3c">Yes, I'll need angel investors or venture capital</label>
+                                </div>
+                            </div>
+
+                            <!-- Question 4 -->
+                            <div class="mb-4">
+                                <h5 class="mb-3">4. How important is ownership flexibility to you?</h5>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q4" id="q4a" value="A" required>
+                                    <label class="form-check-label" for="q4a">Not important</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q4" id="q4b" value="B">
+                                    <label class="form-check-label" for="q4b">Somewhat important</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q4" id="q4c" value="C">
+                                    <label class="form-check-label" for="q4c">Very important — flexibility for investors is key</label>
+                                </div>
+                            </div>
+
+                            <!-- Question 5 -->
+                            <div class="mb-4">
+                                <h5 class="mb-3">5. How do you plan to distribute profits?</h5>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q5" id="q5a" value="A" required>
+                                    <label class="form-check-label" for="q5a">Simple distribution to owners</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q5" id="q5b" value="B">
+                                    <label class="form-check-label" for="q5b">Salary + dividend split for tax efficiency</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q5" id="q5c" value="C">
+                                    <label class="form-check-label" for="q5c">Keep profits in the business for growth</label>
+                                </div>
+                            </div>
+
+                            <!-- Question 6 -->
+                            <div class="mb-4">
+                                <h5 class="mb-3">6. How much compliance complexity are you comfortable with?</h5>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q6" id="q6a" value="A" required>
+                                    <label class="form-check-label" for="q6a">Minimal — I prefer simple requirements</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q6" id="q6b" value="B">
+                                    <label class="form-check-label" for="q6b">Moderate — some complexity is okay for benefits</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q6" id="q6c" value="C">
+                                    <label class="form-check-label" for="q6c">Heavy — I don't mind stricter rules if it helps attract investors</label>
+                                </div>
+                            </div>
+
+                            <!-- Question 7 -->
+                            <div class="mb-4">
+                                <h5 class="mb-3">7. What's your long-term vision for the business?</h5>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q7" id="q7a" value="A" required>
+                                    <label class="form-check-label" for="q7a">Just run the business for income — not planning to sell</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q7" id="q7b" value="B">
+                                    <label class="form-check-label" for="q7b">Maybe sell to another small business</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q7" id="q7c" value="C">
+                                    <label class="form-check-label" for="q7c">Scale big, possibly go public or sell to a large company</label>
+                                </div>
+                            </div>
+
+                            <!-- Question 8 -->
+                            <div class="mb-4">
+                                <h5 class="mb-3">8. Who can be owners in your business?</h5>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q8" id="q8a" value="A" required>
+                                    <label class="form-check-label" for="q8a">All U.S. residents, no problem</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="q8" id="q8b" value="B">
+                                    <label class="form-check-label" for="q8b">Possibly foreign investors or corporations as owners</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q8" id="q8c" value="C">
+                                    <label class="form-check-label" for="q8c">Definitely need flexibility for international ownership</label>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-calculator me-2"></i>Get My Recommendation
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div id="quiz-results" class="card border-0 shadow-sm mt-4" style="display: none;">
+                    <div class="card-body p-4">
+                        <h3 class="text-center mb-4">Your Business Structure Recommendation</h3>
+                        
+                        <div id="result-content">
+                            <!-- Results will be populated by JavaScript -->
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button class="btn btn-outline-primary me-2" onclick="resetQuiz()">
+                                <i class="fas fa-redo me-2"></i>Take Quiz Again
+                            </button>
+                            <a href="/resources" class="btn btn-primary">
+                                <i class="fas fa-tools me-2"></i>Explore More Resources
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Business Structure Comparison -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Business Structure Comparison</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-shield-alt fa-2x text-success"></i>
+                        </div>
+                        <h5 class="text-success">LLC</h5>
+                        <p class="text-muted small">Limited Liability Company</p>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Pass-through taxation</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Flexible ownership</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Minimal compliance</li>
+                            <li class="mb-0"><i class="fas fa-check text-success me-2"></i>Good for small businesses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-building fa-2x text-primary"></i>
+                        </div>
+                        <h5 class="text-primary">S-Corporation</h5>
+                        <p class="text-muted small">S Corporation</p>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Tax savings potential</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Salary + dividends</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Ownership restrictions</li>
+                            <li class="mb-0"><i class="fas fa-check text-success me-2"></i>Good for medium businesses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-chart-line fa-2x text-warning"></i>
+                        </div>
+                        <h5 class="text-warning">C-Corporation</h5>
+                        <p class="text-muted small">C Corporation</p>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Investor-friendly</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Stock options</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Double taxation</li>
+                            <li class="mb-0"><i class="fas fa-check text-success me-2"></i>Good for startups</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Disclaimer -->
+<section class="py-4 bg-light">
+    <div class="container">
+        <div class="alert alert-info">
+            <h6 class="alert-heading">
+                <i class="fas fa-info-circle me-2"></i>Important Disclaimer
+            </h6>
+            <p class="mb-0 small">This quiz provides general guidance only and should not be considered legal, tax, or financial advice. Business structure decisions have significant legal and tax implications. We strongly recommend consulting with a qualified attorney, accountant, or tax professional before making any decisions about your business structure.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Top 25 Cities & States -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3">Top 25 Cities & States for LLC Formation</h2>
+            <p class="lead text-muted">Discover the most popular locations for business formation based on population and business activity.</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="fas fa-map me-2"></i>Top 25 States by Population</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="list-group list-group-flush">
+                                    <a href="/state/california" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>1.</strong> California</span>
+                                        <span class="badge bg-primary rounded-pill">39.5M</span>
+                                    </a>
+                                    <a href="/state/texas" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>2.</strong> Texas</span>
+                                        <span class="badge bg-primary rounded-pill">29.1M</span>
+                                    </a>
+                                    <a href="/state/florida" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>3.</strong> Florida</span>
+                                        <span class="badge bg-primary rounded-pill">21.8M</span>
+                                    </a>
+                                    <a href="/state/new-york" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>4.</strong> New York</span>
+                                        <span class="badge bg-primary rounded-pill">19.5M</span>
+                                    </a>
+                                    <a href="/state/pennsylvania" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>5.</strong> Pennsylvania</span>
+                                        <span class="badge bg-primary rounded-pill">12.8M</span>
+                                    </a>
+                                    <a href="/state/illinois" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>6.</strong> Illinois</span>
+                                        <span class="badge bg-primary rounded-pill">12.7M</span>
+                                    </a>
+                                    <a href="/state/ohio" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>7.</strong> Ohio</span>
+                                        <span class="badge bg-primary rounded-pill">11.7M</span>
+                                    </a>
+                                    <a href="/state/georgia" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>8.</strong> Georgia</span>
+                                        <span class="badge bg-primary rounded-pill">10.7M</span>
+                                    </a>
+                                    <a href="/state/north-carolina" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>9.</strong> North Carolina</span>
+                                        <span class="badge bg-primary rounded-pill">10.4M</span>
+                                    </a>
+                                    <a href="/state/michigan" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>10.</strong> Michigan</span>
+                                        <span class="badge bg-primary rounded-pill">10.0M</span>
+                                    </a>
+                                    <a href="/state/new-jersey" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>11.</strong> New Jersey</span>
+                                        <span class="badge bg-primary rounded-pill">9.3M</span>
+                                    </a>
+                                    <a href="/state/virginia" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>12.</strong> Virginia</span>
+                                        <span class="badge bg-primary rounded-pill">8.6M</span>
+                                    </a>
+                                    <a href="/state/washington" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>13.</strong> Washington</span>
+                                        <span class="badge bg-primary rounded-pill">7.7M</span>
+                                    </a>
+                                    <a href="/state/arizona" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>14.</strong> Arizona</span>
+                                        <span class="badge bg-primary rounded-pill">7.3M</span>
+                                    </a>
+                                    <a href="/state/tennessee" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>15.</strong> Tennessee</span>
+                                        <span class="badge bg-primary rounded-pill">6.9M</span>
+                                    </a>
+                                    <a href="/state/massachusetts" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>16.</strong> Massachusetts</span>
+                                        <span class="badge bg-primary rounded-pill">6.9M</span>
+                                    </a>
+                                    <a href="/state/indiana" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>17.</strong> Indiana</span>
+                                        <span class="badge bg-primary rounded-pill">6.8M</span>
+                                    </a>
+                                    <a href="/state/missouri" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>18.</strong> Missouri</span>
+                                        <span class="badge bg-primary rounded-pill">6.2M</span>
+                                    </a>
+                                    <a href="/state/maryland" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>19.</strong> Maryland</span>
+                                        <span class="badge bg-primary rounded-pill">6.2M</span>
+                                    </a>
+                                    <a href="/state/wisconsin" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>20.</strong> Wisconsin</span>
+                                        <span class="badge bg-primary rounded-pill">5.9M</span>
+                                    </a>
+                                    <a href="/state/colorado" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>21.</strong> Colorado</span>
+                                        <span class="badge bg-primary rounded-pill">5.8M</span>
+                                    </a>
+                                    <a href="/state/minnesota" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>22.</strong> Minnesota</span>
+                                        <span class="badge bg-primary rounded-pill">5.7M</span>
+                                    </a>
+                                    <a href="/state/south-carolina" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>23.</strong> South Carolina</span>
+                                        <span class="badge bg-primary rounded-pill">5.1M</span>
+                                    </a>
+                                    <a href="/state/alabama" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>24.</strong> Alabama</span>
+                                        <span class="badge bg-primary rounded-pill">5.0M</span>
+                                    </a>
+                                    <a href="/state/louisiana" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>25.</strong> Louisiana</span>
+                                        <span class="badge bg-primary rounded-pill">4.7M</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0"><i class="fas fa-city me-2"></i>Top 25 Cities by Population</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="list-group list-group-flush">
+                                    <a href="/city/new-york-ny" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>1.</strong> New York, NY</span>
+                                        <span class="badge bg-success rounded-pill">8.8M</span>
+                                    </a>
+                                    <a href="/city/los-angeles-ca" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>2.</strong> Los Angeles, CA</span>
+                                        <span class="badge bg-success rounded-pill">4.0M</span>
+                                    </a>
+                                    <a href="/city/chicago-il" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>3.</strong> Chicago, IL</span>
+                                        <span class="badge bg-success rounded-pill">2.7M</span>
+                                    </a>
+                                    <a href="/city/houston-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>4.</strong> Houston, TX</span>
+                                        <span class="badge bg-success rounded-pill">2.3M</span>
+                                    </a>
+                                    <a href="/city/phoenix-az" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>5.</strong> Phoenix, AZ</span>
+                                        <span class="badge bg-success rounded-pill">1.6M</span>
+                                    </a>
+                                    <a href="/city/philadelphia-pa" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>6.</strong> Philadelphia, PA</span>
+                                        <span class="badge bg-success rounded-pill">1.6M</span>
+                                    </a>
+                                    <a href="/city/san-antonio-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>7.</strong> San Antonio, TX</span>
+                                        <span class="badge bg-success rounded-pill">1.5M</span>
+                                    </a>
+                                    <a href="/city/san-diego-ca" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>8.</strong> San Diego, CA</span>
+                                        <span class="badge bg-success rounded-pill">1.4M</span>
+                                    </a>
+                                    <a href="/city/dallas-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>9.</strong> Dallas, TX</span>
+                                        <span class="badge bg-success rounded-pill">1.3M</span>
+                                    </a>
+                                    <a href="/city/san-jose-ca" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>10.</strong> San Jose, CA</span>
+                                        <span class="badge bg-success rounded-pill">1.0M</span>
+                                    </a>
+                                    <a href="/city/austin-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>11.</strong> Austin, TX</span>
+                                        <span class="badge bg-success rounded-pill">978K</span>
+                                    </a>
+                                    <a href="/city/jacksonville-fl" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>12.</strong> Jacksonville, FL</span>
+                                        <span class="badge bg-success rounded-pill">949K</span>
+                                    </a>
+                                    <a href="/city/fort-worth-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>13.</strong> Fort Worth, TX</span>
+                                        <span class="badge bg-success rounded-pill">918K</span>
+                                    </a>
+                                    <a href="/city/columbus-oh" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>14.</strong> Columbus, OH</span>
+                                        <span class="badge bg-success rounded-pill">898K</span>
+                                    </a>
+                                    <a href="/city/charlotte-nc" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>15.</strong> Charlotte, NC</span>
+                                        <span class="badge bg-success rounded-pill">885K</span>
+                                    </a>
+                                    <a href="/city/san-francisco-ca" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>16.</strong> San Francisco, CA</span>
+                                        <span class="badge bg-success rounded-pill">873K</span>
+                                    </a>
+                                    <a href="/city/indianapolis-in" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>17.</strong> Indianapolis, IN</span>
+                                        <span class="badge bg-success rounded-pill">863K</span>
+                                    </a>
+                                    <a href="/city/seattle-wa" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>18.</strong> Seattle, WA</span>
+                                        <span class="badge bg-success rounded-pill">744K</span>
+                                    </a>
+                                    <a href="/city/denver-co" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>19.</strong> Denver, CO</span>
+                                        <span class="badge bg-success rounded-pill">727K</span>
+                                    </a>
+                                    <a href="/city/washington-dc" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>20.</strong> Washington, DC</span>
+                                        <span class="badge bg-success rounded-pill">689K</span>
+                                    </a>
+                                    <a href="/city/boston-ma" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>21.</strong> Boston, MA</span>
+                                        <span class="badge bg-success rounded-pill">675K</span>
+                                    </a>
+                                    <a href="/city/el-paso-tx" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>22.</strong> El Paso, TX</span>
+                                        <span class="badge bg-success rounded-pill">679K</span>
+                                    </a>
+                                    <a href="/city/nashville-tn" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>23.</strong> Nashville, TN</span>
+                                        <span class="badge bg-success rounded-pill">689K</span>
+                                    </a>
+                                    <a href="/city/detroit-mi" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>24.</strong> Detroit, MI</span>
+                                        <span class="badge bg-success rounded-pill">674K</span>
+                                    </a>
+                                    <a href="/city/oklahoma-city-ok" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        <span><strong>25.</strong> Oklahoma City, OK</span>
+                                        <span class="badge bg-success rounded-pill">655K</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/cities" class="btn btn-primary btn-lg">
+                <i class="fas fa-search me-2"></i>Browse All Locations
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+function calculateResult() {
+    const form = document.getElementById('businessQuiz');
+    const formData = new FormData(form);
+    
+    let aCount = 0, bCount = 0, cCount = 0;
+    
+    // Count answers
+    for (let i = 1; i <= 8; i++) {
+        const answer = formData.get(`q${i}`);
+        if (answer === 'A') aCount++;
+        else if (answer === 'B') bCount++;
+        else if (answer === 'C') cCount++;
+    }
+    
+    // Determine recommendation
+    let recommendation, description, color, icon;
+    
+    if (aCount >= bCount && aCount >= cCount) {
+        recommendation = "LLC";
+        description = "An LLC is the best choice for your business. It offers simplicity, flexibility, and pass-through taxation while providing liability protection.";
+        color = "success";
+        icon = "shield-alt";
+    } else if (bCount >= aCount && bCount >= cCount) {
+        recommendation = "S-Corporation";
+        description = "An S-Corporation is recommended for your business. It offers tax advantages through salary and dividend distributions while maintaining some flexibility.";
+        color = "primary";
+        icon = "building";
+    } else {
+        recommendation = "C-Corporation";
+        description = "A C-Corporation is the best fit for your business goals. It's ideal for businesses planning to raise significant funding, issue stock options, or eventually go public.";
+        color = "warning";
+        icon = "chart-line";
+    }
+    
+    // Display results
+    const resultContent = document.getElementById('result-content');
+    resultContent.innerHTML = `
+        <div class="text-center mb-4">
+            <div class="bg-${color} bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 100px; height: 100px;">
+                <i class="fas fa-${icon} fa-3x text-${color}"></i>
+            </div>
+            <h4 class="text-${color}">${recommendation}</h4>
+            <p class="lead">${description}</p>
+        </div>
+        
+        <div class="row mb-4">
+            <div class="col-md-4 text-center">
+                <h5 class="text-success">A Answers: ${aCount}</h5>
+                <p class="text-muted small">LLC-leaning</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h5 class="text-primary">B Answers: ${bCount}</h5>
+                <p class="text-muted small">S-Corp-leaning</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h5 class="text-warning">C Answers: ${cCount}</h5>
+                <p class="text-muted small">C-Corp-leaning</p>
+            </div>
+        </div>
+        
+        <div class="alert alert-warning">
+            <h6 class="alert-heading">
+                <i class="fas fa-exclamation-triangle me-2"></i>Next Steps
+            </h6>
+            <p class="mb-0">This is a general recommendation based on your answers. We strongly recommend consulting with a qualified attorney or accountant to discuss your specific situation and ensure you choose the right business structure for your needs.</p>
+        </div>
+    `;
+    
+    // Show results
+    document.getElementById('quiz-form').style.display = 'none';
+    document.getElementById('quiz-results').style.display = 'block';
+    
+    // Scroll to results
+    document.getElementById('quiz-results').scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetQuiz() {
+    document.getElementById('businessQuiz').reset();
+    document.getElementById('quiz-form').style.display = 'block';
+    document.getElementById('quiz-results').style.display = 'none';
+}
+
+// Form submission
+document.getElementById('businessQuiz').addEventListener('submit', function(e) {
+    e.preventDefault();
+    calculateResult();
+});
+</script>
+
+<style>
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+</style>
+{% endblock %}
